@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Denzo（Crypto豪哥）的增长作品集：用产品和机制驱动增长。">
+<title>Denzo 增长作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+html { color-scheme: light; } body { margin: 0; } img { max-width: 100%; }
+/* Layout: 一张「机制图纸」——每个案例都画成 输入 → 机制 → 结果 的流程，左侧是案例编号与身份，右侧是正文 */
+:root {
+  --paper: #f2f5f4;
+  --sheet: #ffffff;
+  --ink: #12302f;
+  --ink-2: #4a5f5d;
+  --line: #d5dfdd;
+  --accent: #d9861c;
+  --accent-soft: #fbeedb;
+  --teal: #1f6f6a;
+  --teal-soft: #e1efed;
+  --todo-bg: #fff3b0;
+  --todo-fg: #6b5400;
+  --display: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1817; --sheet: #15201f; --ink: #e3eeec; --ink-2: #9db3b0; --line: #29393a;
+    --accent: #f0a443; --accent-soft: #3a2a14; --teal: #6cc3bb; --teal-soft: #17302e;
+    --todo-bg: #4a3f0a; --todo-fg: #ffe58a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1817; --sheet: #15201f; --ink: #e3eeec; --ink-2: #9db3b0; --line: #29393a;
+  --accent: #f0a443; --accent-soft: #3a2a14; --teal: #6cc3bb; --teal-soft: #17302e;
+  --todo-bg: #4a3f0a; --todo-fg: #ffe58a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px; background-attachment: fixed;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+a { color: var(--teal); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.todo { background: var(--todo-bg); color: var(--todo-fg); padding: 0 4px; border-radius: 3px; font-size: .92em; }
+.draft-note { margin-top: 20px; padding: 10px 14px; border: 1px dashed var(--todo-fg); background: var(--todo-bg); color: var(--todo-fg); border-radius: 8px; font-size: 14px; }
+
+/* ---------- 头部 ---------- */
+header.hero { padding-block: 56px 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+.kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; color: var(--teal); text-transform: uppercase; }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(34px, 6vw, 60px); line-height: 1.15; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -.01em; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { max-width: 38em; color: var(--ink-2); font-size: 17px; margin: 0; }
+.id-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; min-width: 240px; font-size: 14px; }
+.id-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+.id-card dt { color: var(--ink-2); }
+.id-card dd { margin: 0; font-weight: 500; }
+
+/* ---------- 能力条 ---------- */
+.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 56px; }
+.skill { background: var(--sheet); padding: 18px 18px 16px; min-width: 0; }
+.skill b { display: block; font-size: 16px; margin-bottom: 4px; }
+.skill span { color: var(--ink-2); font-size: 14px; line-height: 1.6; display: block; }
+.skill .tag { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
+
+/* ---------- 案例 ---------- */
+h2.section { font-size: 24px; font-weight: 900; margin: 0 0 20px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h2.section small { font-weight: 400; font-size: 14px; color: var(--ink-2); }
+.case { display: grid; grid-template-columns: 200px 1fr; gap: 28px; background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+.case-side { min-width: 0; }
+.case-side .no { font-family: var(--mono); font-size: 13px; color: var(--teal); }
+.case-side h3 { font-size: 22px; font-weight: 900; line-height: 1.35; margin: 6px 0 10px; text-wrap: balance; }
+.case-side .role { font-size: 13px; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); }
+.case-main { min-width: 0; }
+.case-main p { margin: 0 0 12px; max-width: 42em; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); margin: 16px 0 6px; }
+.label:first-child { margin-top: 0; }
+ul.points { margin: 0 0 4px; padding-left: 1.2em; }
+ul.points li { margin-bottom: 4px; }
+
+/* 机制流程图 */
+.flow { display: flex; align-items: stretch; gap: 0; margin: 14px 0 6px; overflow-x: auto; padding-bottom: 4px; }
+.node { flex: 1 1 0; min-width: 130px; border: 1px solid var(--line); background: var(--paper); border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.55; }
+.node b { display: block; font-size: 12px; font-family: var(--mono); color: var(--ink-2); font-weight: 400; margin-bottom: 2px; letter-spacing: .06em; }
+.node.core { background: var(--accent-soft); border-color: var(--accent); }
+.arrow { flex: 0 0 26px; display: grid; place-items: center; color: var(--accent); font-family: var(--mono); }
+
+/* 数据 */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 8px; }
+.metric { border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; min-width: 0; }
+.metric .v { font-size: 26px; font-weight: 900; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.metric .k { font-size: 13px; color: var(--ink-2); }
+
+/* 小案例格 */
+.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+.mini { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.mini h4 { margin: 0 0 4px; font-size: 17px; font-weight: 900; }
+.mini .sub { font-size: 13px; color: var(--teal); margin-bottom: 8px; }
+.mini p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+
+/* 做事方法 */
+.method { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 56px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--sheet); }
+.step { padding: 20px; border-right: 1px solid var(--line); min-width: 0; }
+.step:last-child { border-right: none; }
+.step .n { font-family: var(--mono); color: var(--accent); font-size: 13px; }
+.step b { display: block; font-size: 17px; margin: 4px 0 6px; }
+.step p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+
+footer { border-top: 1px solid var(--line); padding-top: 28px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+footer .big { font-size: 22px; font-weight: 900; }
+.contact { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); text-decoration: none; font-size: 14px; }
+.btn.primary { background: var(--teal); border-color: var(--teal); color: var(--sheet); }
+
+@media (max-width: 860px) {
+  header.hero { grid-template-columns: 1fr; }
+  .skills, .method { grid-template-columns: 1fr 1fr; }
+  .step:nth-child(2) { border-right: none; }
+  .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .mini-grid { grid-template-columns: 1fr; }
+  .case { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
+}
+@media (max-width: 480px) {
+  .skills, .method { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 1px solid var(--line); }
+  .step:last-child { border-bottom: none; }
+  .flow { flex-direction: column; }
+  .arrow { flex-basis: 22px; transform: rotate(90deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .case, .mini { transition: border-color .2s; }
+  .case:hover, .mini:hover { border-color: var(--teal); }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <div class="kicker">Growth · Mechanism · Tools</div>
+      <h1>用<em>产品和机制</em>驱动增长</h1>
+      <p class="lede">我是 Denzo（Crypto豪哥），2021 年进入币圈，目前在预测市场平台 Omenx 负责增长与活动。我喜欢把重复的运营动作变成规则和工具：设计一次，让增长自己持续发生。这里是我做过的项目，每个都写清楚了问题、机制和结果。</p>
+    </div>
+    <div class="id-card">
+      <dl>
+        <dt>方向</dt><dd>增长产品 / 策略运营</dd>
+        <dt>现职</dt><dd>Omenx · 增长与活动</dd>
+        <dt>入圈</dt><dd class="mono">2021</dd>
+        <dt>X</dt><dd><a href="https://x.com/BTC_2044" target="_blank" rel="noopener">@BTC_2044</a></dd>
+        <dt>TG</dt><dd><a href="https://t.me/DJ2044" target="_blank" rel="noopener">@DJ2044</a></dd>
+      </dl>
+    </div>
+  </header>
+
+  <section class="skills" aria-label="核心能力">
+    <div class="skill"><div class="tag">MECHANISM</div><b>机制设计</b><span>活动规则、激励与分成、防刷与去重，让参与者自己动起来</span></div>
+    <div class="skill"><div class="tag">GROWTH</div><b>增长运营</b><span>平台官号增长、注册转化活动、内容挖矿玩法，盯数据做复盘</span></div>
+    <div class="skill"><div class="tag">BUILD</div><b>AI 辅助开发</b><span>用 AI 做出可用的产品：Chrome 插件、桌面客户端、云端服务、小程序</span></div>
+    <div class="skill"><div class="tag">CREATOR</div><b>懂创作者</b><span>自己在 X、币安广场、欧易星球持续产出，知道创作者要什么</span></div>
+  </section>
+
+  <h2 class="section">核心案例 <small>按「问题 → 机制 → 结果」整理</small></h2>
+
+  <!-- 案例 1 -->
+  <article class="case">
+    <div class="case-side">
+      <div class="no">CASE 01 · 商业化</div>
+      <h3>星球创作者内容助手</h3>
+      <div class="role">独立设计、开发并运营 · 2026.10 至今</div>
+      <div class="chips"><span class="chip">付费产品</span><span class="chip">裂变机制</span><span class="chip">AI 内容</span><span class="chip">云端素材</span></div>
+    </div>
+    <div class="case-main">
+      <div class="label">问题</div>
+      <p>欧易星球的创作收益取决于内容质量和互动。很多创作者想持续输出，但每天找选题、写出有观点又不重样的内容很吃力，收益也就上不去。</p>
+      <div class="label">机制</div>
+      <div class="flow" role="list">
+        <div class="node" role="listitem"><b>INPUT</b>资讯监控 + 交易监控（开仓 / 平仓 / 爆仓），实时提供选题</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node core" role="listitem"><b>ENGINE</b>AI 按约 50 种写作人设起草内容，每位创作者风格不同</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>DELIVER</b>素材在云端准备好，创作者在客户端领取使用</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>OUTPUT</b>创作者稳定输出，按周查看收益</div>
+      </div>
+      <ul class="points">
+        <li><b>定价：</b>低门槛基础费 + 收益分成，我的收入和创作者的收益绑在一起，只有他们赚到我才赚到。</li>
+        <li><b>裂变：</b>每推荐一位付费好友，推荐人的分成比例下调一档，有保底下限，让老用户主动带新用户。</li>
+        <li><b>控规模：</b>用户上限 100 位，每天的内容量有上限，优先保证内容质量，不追求数量。</li>
+        <li><b>质量原则：</b>内容要有逻辑、有观点、有互动感，200–500 字，读起来像真人写的。</li>
+      </ul>
+      <div class="label">结果</div>
+      <div class="metrics">
+        <div class="metric"><div class="v">数十位</div><div class="k">付费用户</div></div>
+        <div class="metric"><div class="v mono">90%</div><div class="k">续费率</div></div>
+        <div class="metric"><div class="v mono">5–10U</div><div class="k">单账号每周收益</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 案例 2 -->
+  <article class="case">
+    <div class="case-side">
+      <div class="no">CASE 02 · 增长活动</div>
+      <h3>Omenx 广场增长与互动活动</h3>
+      <div class="role">活动负责人 · Omenx</div>
+      <div class="chips"><span class="chip">注册转化</span><span class="chip">激励设计</span><span class="chip">官号增长</span></div>
+    </div>
+    <div class="case-main">
+      <div class="label">问题</div>
+      <p>预测市场是新品类，用户需要一个低门槛的理由去了解、注册并完成第一笔交易。</p>
+      <div class="label">机制</div>
+      <div class="flow" role="list">
+        <div class="node" role="listitem"><b>TRIGGER</b>币安广场官号发起互动帖</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node core" role="listitem"><b>INCENTIVE</b>完成互动并注册的用户获得无门槛仓位券</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>CONTROL</b>UID 去重核对、累计成本跟踪、财务审批</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>OUTPUT</b>新注册用户带着仓位券体验产品</div>
+      </div>
+      <ul class="points">
+        <li>用「仓位券」代替直接发币：奖励只能在产品里用，用户必须真的去下单体验。</li>
+        <li>每批奖励前做 UID 去重和历史中奖核对，持续记录累计成本，控制投入产出。</li>
+        <li>同时负责 Omenx 币安广场官号增长，每天写日报、每周做复盘；制作《The Market's Call》足球赛事行情短视频系列。</li>
+      </ul>
+      <div class="label">结果</div>
+      <div class="metrics">
+        <div class="metric"><div class="v mono">0 → 1.6万</div><div class="k">广场官号粉丝（2 个月）</div></div>
+        <div class="metric"><div class="v mono">25</div><div class="k">单场活动带来的注册</div></div>
+        <div class="metric"><div class="v mono">0.5–1U</div><div class="k">单个注册成本</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 案例 3 -->
+  <article class="case">
+    <div class="case-side">
+      <div class="no">CASE 03 · 效率工具</div>
+      <h3>帖子同步助手</h3>
+      <div class="role">独立设计与开发 · Chrome 插件 · 2026.11</div>
+      <div class="chips"><span class="chip">多平台分发</span><span class="chip">自动化</span><span class="chip">快速迭代</span></div>
+    </div>
+    <div class="case-main">
+      <div class="label">问题</div>
+      <p>同一条内容要在 X、币安广场、欧易星球各发一遍，手动复制图文很耗时间，不同步就少了两个平台的曝光和收益。</p>
+      <div class="label">机制</div>
+      <div class="flow" role="list">
+        <div class="node" role="listitem"><b>CAPTURE</b>在 X 发主帖的瞬间抓取全文和图片，自动排除回复、引用、转帖</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node core" role="listitem"><b>RULES</b>超过星球 500 字上限只发广场；长帖只拿到一半时不自动发</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>PUBLISH</b>约 10 秒后在后台填写、贴图、发布，不打断我刷推</div>
+      </div>
+      <ul class="points">
+        <li>两天内在真实网站上迭代了 20 多个版本，解决了内容重复、长帖截断、话题联想挡住按钮、后台标签页不渲染等问题。</li>
+        <li>多层防重复：同一次发布只执行一次，同一条帖子 3 分钟内只发一次。</li>
+        <li>弹窗里有当日统计、发布记录和逐步诊断，出问题能马上定位。</li>
+      </ul>
+      <div class="label">结果</div>
+      <div class="metrics">
+        <div class="metric"><div class="v">3 个平台</div><div class="k">发一次推，自动同步</div></div>
+        <div class="metric"><div class="v mono">~10 秒</div><div class="k">发推后开始同步</div></div>
+        <div class="metric"><div class="v">约 30 分钟</div><div class="k">每天节省（按每天 10 条主帖估算）</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 案例 4 -->
+  <article class="case">
+    <div class="case-side">
+      <div class="no">CASE 04 · 实战复盘</div>
+      <h3>USD8 内容挖矿：4 天冲进周榜第 9</h3>
+      <div class="role">参与者 + 自研提交工具 · 2026.11</div>
+      <div class="chips"><span class="chip">规则拆解</span><span class="chip">自动化</span><span class="chip">复盘</span></div>
+    </div>
+    <div class="case-main">
+      <div class="label">问题</div>
+      <p>USD8 的内容挖矿要求在 X 发带标签的帖子，再把链接逐条提交到活动网站，提交还有频率限制。人工逐条等待提交，效率太低。</p>
+      <div class="label">机制</div>
+      <div class="flow" role="list">
+        <div class="node" role="listitem"><b>DETECT</b>自动识别 X 上带齐 3 个标签的帖子和回复</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node core" role="listitem"><b>QUEUE</b>按设定间隔自动排队提交，遇到限流自动重试</div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node" role="listitem"><b>RECONCILE</b>「今日对账」比对 X 与网站数据，缺的自动补交</div>
+      </div>
+      <ul class="points">
+        <li>拆解奖励规则：奖池按 CMP 占比分配，质押时长带来加成。我质押 2 个月，在加成和资金占用之间取平衡。</li>
+        <li>复盘结论：前 3 天没意识到这是项目方在撒钱，反应慢了；真正的天花板是账号流量，平均每条约 120 阅读，头部玩家单条可达数万。</li>
+      </ul>
+      <div class="label">结果</div>
+      <div class="metrics">
+        <div class="metric"><div class="v mono">541</div><div class="k">条内容提交</div></div>
+        <div class="metric"><div class="v mono">#9</div><div class="k">周榜排名（61.75 CMP）</div></div>
+        <div class="metric"><div class="v mono">36.33</div><div class="k">USD8 奖励（第 1 周）</div></div>
+      </div>
+    </div>
+  </article>
+
+  <h2 class="section">更多项目 <small>用 AI 把想法做成能用的产品</small></h2>
+  <section class="mini-grid">
+    <div class="mini">
+      <h4>走呗走呗</h4>
+      <div class="sub">微信小程序 · 已上线</div>
+      <p>旅行地图小程序：225 座城市攻略、5A 景区游玩指南，以及「一路玩」路线规划（高铁 / 自驾，3–15 天，三种节奏，可替换或删除不想去的城市）。图片按分包加载，带模糊占位，弱网也流畅。</p>
+    </div>
+    <div class="mini">
+      <h4>豪哥内容工坊</h4>
+      <div class="sub">本地 + 云端内容系统</div>
+      <p>内容助手的底座：资讯和交易监控在云端运行，电脑关机也能持续产出选题；AI 按人设起草文案，支持为不同用户定制风格和授权续期。</p>
+    </div>
+    <div class="mini">
+      <h4>DramaLens 短剧创作助手</h4>
+      <div class="sub">Chrome 插件</div>
+      <p>给短剧创作者用的浏览器助手：在短剧平台上一键整理剧情和台词，方便拆解爆款短剧的结构，积累自己的创作素材。</p>
+    </div>
+  </section>
+
+  <h2 class="section">我的做事方式</h2>
+  <section class="method">
+    <div class="step"><div class="n">01</div><b>找到重复</b><p>从自己每天被卡住的环节出发，找到值得自动化的重复动作。</p></div>
+    <div class="step"><div class="n">02</div><b>拆清规则</b><p>先弄懂平台和活动的规则、限制与激励，再决定怎么设计。</p></div>
+    <div class="step"><div class="n">03</div><b>真实环境验证</b><p>直接在真实网站上跑，用截图和诊断定位问题，小步快速迭代。</p></div>
+    <div class="step"><div class="n">04</div><b>数据复盘</b><p>每个项目都留下数据和结论，写进日报、周报和推特复盘。</p></div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="big">专注增长产品 / 策略运营方向</div>
+      <div style="color:var(--ink-2);font-size:14px">欢迎通过 X 或 Telegram 联系：<span class="mono">@DJ2044</span></div>
+    </div>
+    <div class="contact">
+      <a class="btn primary" href="https://x.com/BTC_2044" target="_blank" rel="noopener">X · @BTC_2044</a>
+      <a class="btn" href="https://t.me/DJ2044" target="_blank" rel="noopener">Telegram · @DJ2044</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
