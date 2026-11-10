@@ -76,14 +76,9 @@ h1 em { font-style: normal; color: var(--accent); }
 h2.section { font-size: 24px; font-weight: 900; margin: 0 0 20px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 h2.section small { font-weight: 400; font-size: 14px; color: var(--ink-2); }
 .case { display: grid; grid-template-columns: 200px 1fr; gap: 28px; background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
-body { counter-reset: casenum; }
-.case { position: relative; counter-increment: casenum; }
-.case::before { content: counter(casenum, decimal-leading-zero); position: absolute; top: 22px; right: 26px; font-family: var(--mono); font-size: 40px; font-weight: 700; line-height: 1; color: var(--accent); opacity: .9; font-variant-numeric: tabular-nums; }
-@media (min-width: 1200px) {
-  .case::before { right: auto; left: -84px; top: 26px; font-size: 52px; }
-}
 .case-side { min-width: 0; }
-.case-side .no { font-family: var(--mono); font-size: 13px; color: var(--teal); }
+.case-side .no { font-family: var(--mono); font-size: 13px; color: var(--teal); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.case-side .no .num { font-size: 20px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
 .case-side h3 { font-size: 22px; font-weight: 900; line-height: 1.35; margin: 6px 0 10px; text-wrap: balance; }
 .case-side .role { font-size: 13px; color: var(--ink-2); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
@@ -181,7 +176,7 @@ footer .big { font-size: 22px; font-weight: 900; }
   <!-- 案例 0：囤比特币之路 -->
   <article class="case">
     <div class="case-side">
-      <div class="no">CASE 01 · 独立产品</div>
+      <div class="no"><span class="num">CASE 01</span>独立产品</div>
       <h3>囤比特币之路<br><span style="font-size:.8em;font-weight:500;opacity:.7">THE BITCOIN JOURNEY</span></h3>
       <div class="role">独立策划、开发并运营 · <a href="https://btc.aicook.top/" target="_blank" rel="noopener">btc.aicook.top</a></div>
       <div class="chips"><span class="chip">在线游戏</span><span class="chip">多人社交</span><span class="chip">任务体系</span><span class="chip">社区运营</span></div>
@@ -219,7 +214,7 @@ footer .big { font-size: 22px; font-weight: 900; }
   <!-- 案例 1 -->
   <article class="case">
     <div class="case-side">
-      <div class="no">CASE 02 · 商业化</div>
+      <div class="no"><span class="num">CASE 02</span>商业化</div>
       <h3>星球创作者内容助手</h3>
       <div class="role">独立设计、开发并运营 · 2026.10 至今</div>
       <div class="chips"><span class="chip">付费产品</span><span class="chip">裂变机制</span><span class="chip">AI 内容</span><span class="chip">云端素材</span></div>
@@ -255,7 +250,7 @@ footer .big { font-size: 22px; font-weight: 900; }
   <!-- 案例 2 -->
   <article class="case">
     <div class="case-side">
-      <div class="no">CASE 03 · 增长活动</div>
+      <div class="no"><span class="num">CASE 03</span>增长活动</div>
       <h3>Omenx 广场增长与互动活动</h3>
       <div class="role">活动负责人 · Omenx</div>
       <div class="chips"><span class="chip">注册转化</span><span class="chip">激励设计</span><span class="chip">官号增长</span></div>
@@ -290,7 +285,7 @@ footer .big { font-size: 22px; font-weight: 900; }
   <!-- 案例 3 -->
   <article class="case">
     <div class="case-side">
-      <div class="no">CASE 04 · 效率工具</div>
+      <div class="no"><span class="num">CASE 04</span>效率工具</div>
       <h3>帖子同步助手</h3>
       <div class="role">独立设计与开发 · Chrome 插件 · 2026.11</div>
       <div class="chips"><span class="chip">多平台分发</span><span class="chip">自动化</span><span class="chip">快速迭代</span></div>
@@ -323,7 +318,7 @@ footer .big { font-size: 22px; font-weight: 900; }
   <!-- 案例 4 -->
   <article class="case">
     <div class="case-side">
-      <div class="no">CASE 05 · 效率工具</div>
+      <div class="no"><span class="num">CASE 05</span>效率工具</div>
       <h3>USD8 排队提交助手</h3>
       <div class="role">独立设计并开发 · Chrome 插件 · 2026.11</div>
       <div class="chips"><span class="chip">自动化</span><span class="chip">流程设计</span><span class="chip">数据对账</span></div>
