@@ -183,6 +183,11 @@ footer .sub{color:var(--ink-2);font-size:14px;margin-top:4px}
  h2.section{break-after:avoid}
  .hero{margin-top:0}
 }
+
+/* 复制邮箱提示 */
+.copy-toast{position:fixed;left:50%;bottom:28px;z-index:50;transform:translate(-50%,20px);opacity:0;padding:10px 18px;border-radius:999px;background:#121a27;border:1px solid #f7a53177;color:var(--ink);font-size:14px;box-shadow:0 10px 30px #000a;transition:opacity .2s,transform .2s;pointer-events:none}
+.copy-toast.show{opacity:1;transform:translate(-50%,0)}
+@media print{.copy-toast{display:none}}
 </style>
 </head>
 <body>
@@ -469,5 +474,16 @@ footer .sub{color:var(--ink-2);font-size:14px;margin-top:4px}
   </div>
  </footer>
 </div>
+<div class="copy-toast" role="status" aria-live="polite"></div>
+<script>
+// 点邮箱：复制到剪贴板并提示；电脑装了邮件客户端时同时打开写信窗口。
+(function(){var toast=document.querySelector('.copy-toast'),timer;
+function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},2200);}
+function fallback(text){var i=document.createElement('textarea');i.value=text;i.style.position='fixed';i.style.opacity='0';document.body.appendChild(i);i.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}i.remove();return ok;}
+document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){var mail=a.getAttribute('href').slice(7);
+ var done=function(){show('邮箱已复制：'+mail);},fail=function(){show(fallback(mail)?'邮箱已复制：'+mail:'我的邮箱：'+mail);};
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(mail).then(done,fail);else fail();});});
+})();
+</script>
 </body>
 </html>
