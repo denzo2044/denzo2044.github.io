@@ -3,181 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Denzo（Crypto豪哥）的增长作品集：用产品和机制驱动增长。">
+<meta name="description" content="Denzo（Crypto豪哥）的增长作品集：用产品和机制驱动增长。2021 年入圈，独立开发多款有真实用户的产品。">
+<meta name="theme-color" content="#05070c">
 <title>Denzo 增长作品集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-html { color-scheme: light; } body { margin: 0; } img { max-width: 100%; }
-/* Layout: 一张「机制图纸」——每个案例都画成 输入 → 机制 → 结果 的流程，左侧是案例编号与身份，右侧是正文 */
-:root {
-  --paper: #f2f5f4;
-  --sheet: #ffffff;
-  --ink: #12302f;
-  --ink-2: #4a5f5d;
-  --line: #d5dfdd;
-  --accent: #d9861c;
-  --accent-soft: #fbeedb;
-  --teal: #1f6f6a;
-  --teal-soft: #e1efed;
-  --todo-bg: #fff3b0;
-  --todo-fg: #6b5400;
-  --display: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+/* 视觉：深空夜色 + 地平线日出的橙金光 + 头像的天蓝描边，和 X 主页（@BTC_2044）同一套色调 */
+:root{
+ --space:#05070c;--space-2:#0a0e17;--card:#0e131d;--card-2:#121a27;
+ --ink:#eef1f6;--ink-2:#b4bdcb;--ink-3:#8b96a8;--line:#1d2636;--line-2:#2a3548;
+ --gold:#f7a531;--gold-2:#ffcc6e;--gold-soft:#f7a5311f;--sky:#9fd2ff;--sky-soft:#9fd2ff1a;
+ --display:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+ --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+ color-scheme:dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0f1817; --sheet: #15201f; --ink: #e3eeec; --ink-2: #9db3b0; --line: #29393a;
-    --accent: #f0a443; --accent-soft: #3a2a14; --teal: #6cc3bb; --teal-soft: #17302e;
-    --todo-bg: #4a3f0a; --todo-fg: #ffe58a; color-scheme: dark;
-  }
+*{box-sizing:border-box}
+html{background:var(--space)}
+body{margin:0;background:var(--space);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(1.2px 1.2px at 12% 18%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 27% 62%,#fff6 50%,transparent 51%),
+ radial-gradient(1.4px 1.4px at 44% 8%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 63% 41%,#fff5 50%,transparent 51%),
+ radial-gradient(1.2px 1.2px at 78% 22%,#fff7 50%,transparent 51%),radial-gradient(1px 1px at 88% 70%,#fff5 50%,transparent 51%),
+ radial-gradient(1px 1px at 6% 84%,#fff5 50%,transparent 51%),radial-gradient(1.3px 1.3px at 53% 90%,#fff6 50%,transparent 51%),
+ radial-gradient(1000px 520px at 85% -8%,#f7a5311c,transparent 60%),radial-gradient(800px 600px at -10% 40%,#9fd2ff0d,transparent 60%)}
+img{max-width:100%;display:block}
+a{color:var(--sky);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 72px max(16px,env(safe-area-inset-right,0px))}
+
+/* 顶部导航 */
+.topbar{position:sticky;top:0;z-index:20;background:#05070ccc;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #ffffff0d}
+.topbar .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:18px}
+.topbar .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);text-decoration:none;font-size:15px}
+.topbar .brand img{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky)}
+.topbar nav{display:flex;gap:16px;margin-left:auto;font-size:14px}
+.topbar nav a{color:var(--ink-2);text-decoration:none}
+.topbar nav a:hover{color:var(--ink)}
+.dl{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#2a1700;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 18px #f7a53140;white-space:nowrap}
+.dl svg{width:15px;height:15px}
+
+/* 头部：横幅 + 头像，像 X 主页 */
+.hero{margin-top:24px;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.banner{position:relative;height:clamp(150px,30vw,300px);background:#000 url(https://pbs.twimg.com/profile_banners/1726642213281787904/1794143534/1500x500) center 30%/cover}
+.banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#0e131d 100%)}
+.hero-body{position:relative;padding:0 32px 30px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.avatar{width:132px;height:132px;margin-top:-78px;border-radius:50%;padding:5px;background:linear-gradient(180deg,#d6ecff,#7fbef5);box-shadow:0 10px 30px #000a;position:relative;z-index:1}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--card)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-top:14px}
+h1{font-weight:900;font-size:clamp(32px,5.4vw,56px);line-height:1.15;margin:8px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:40em;color:var(--ink-2);font-size:16.5px;margin:0}
+.id-card{min-width:250px;padding:18px 20px;border-radius:14px;background:var(--card-2);border:1px solid var(--line-2);font-size:14px}
+.id-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px}
+.id-card dt{color:var(--ink-3)}
+.id-card dd{margin:0;font-weight:500;word-break:break-all}
+
+/* 能力条 */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 64px}
+.skill{padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--line);min-width:0}
+.skill .tag{font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:.12em;margin-bottom:6px}
+.skill b{display:block;font-size:16px;margin-bottom:4px}
+.skill span{display:block;color:var(--ink-2);font-size:14px;line-height:1.6}
+
+/* 章节标题 */
+[id^=case-]{scroll-margin-top:72px}
+h2.section{font-size:26px;font-weight:900;margin:0 0 22px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;scroll-margin-top:72px}
+h2.section .idx{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.1em}
+h2.section small{font-weight:400;font-size:14px;color:var(--ink-3)}
+
+/* 案例 */
+.case{display:grid;grid-template-columns:210px 1fr;gap:30px;padding:30px;margin-bottom:18px;border-radius:18px;background:linear-gradient(180deg,var(--card),#0b1019);border:1px solid var(--line);position:relative;overflow:hidden}
+.case:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),transparent)}
+.case-side{min-width:0}
+.case-side .no{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.case-side .num{font-size:18px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.case-side h3{font-size:22px;font-weight:900;line-height:1.35;margin:8px 0 10px;text-wrap:balance}
+.case-side h3 span{display:block;font-size:12px;font-weight:500;color:var(--ink-3);letter-spacing:.12em;margin-top:2px}
+.case-side .role{font-size:13px;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--sky-soft);color:var(--sky);border:1px solid #9fd2ff26}
+.case-main{min-width:0}
+.case-main p{margin:0 0 12px;max-width:44em;color:#d9dee7}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold);margin:18px 0 6px}
+.label:first-child{margin-top:0}
+ul.points{margin:0 0 4px;padding-left:1.2em;color:#d9dee7}
+ul.points li{margin-bottom:5px}
+ul.points li::marker{color:var(--gold)}
+.flow{display:flex;align-items:stretch;margin:14px 0 8px;overflow-x:auto;padding-bottom:4px}
+.node{flex:1 1 0;min-width:130px;padding:10px 12px;border-radius:12px;background:#0a0f17;border:1px solid var(--line-2);font-size:13.5px;line-height:1.55;color:#d9dee7}
+.node b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--ink-3);letter-spacing:.1em;margin-bottom:3px}
+.node.core{background:var(--gold-soft);border-color:#f7a53188}
+.node.core b{color:var(--gold-2)}
+.arrow{flex:0 0 26px;display:grid;place-items:center;color:var(--gold);font-family:var(--mono)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:8px}
+.metric{padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line);min-width:0}
+.metric .v{font-size:24px;font-weight:900;line-height:1.25;color:var(--gold-2)}
+.metric .k{font-size:13px;color:var(--ink-2)}
+
+/* 小项目 */
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 64px}
+.mini{padding:20px;border-radius:16px;background:var(--card);border:1px solid var(--line);min-width:0}
+.mini h4{margin:0 0 4px;font-size:17px;font-weight:900}
+.mini .sub{font-size:13px;color:var(--sky);margin-bottom:8px}
+.mini p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.7}
+
+/* 时间线 */
+.timeline{position:relative;margin:0 0 64px;padding-left:34px}
+.timeline:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),#9fd2ff66 55%,#9fd2ff10)}
+.era{position:relative;margin-bottom:22px}
+.era:before{content:"";position:absolute;left:-31px;top:24px;width:16px;height:16px;border-radius:50%;background:var(--space);border:3px solid var(--gold);box-shadow:0 0 0 4px #f7a53122,0 0 18px #f7a53166}
+.era.past:before{border-color:var(--sky);box-shadow:0 0 0 4px #9fd2ff1a}
+.era-card{padding:22px 24px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.era-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.era-head .yr{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.era.past .era-head .yr{color:var(--sky)}
+.era-head h3{margin:0;font-size:21px;font-weight:900}
+.era-head .tagline{font-size:13px;color:var(--ink-3)}
+.era p{margin:6px 0 10px;color:#d9dee7;max-width:46em}
+.era .gain{margin:12px 0 0;padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.era .gain b{color:var(--gold-2);font-weight:700}
+.marks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.marks li{display:flex;align-items:baseline;gap:7px;padding:5px 11px;border-radius:999px;background:#0a0f17;border:1px solid var(--line-2);font-size:13px}
+.marks li .mono{font-size:11.5px;color:var(--ink-3)}
+.marks a{color:inherit;text-decoration:none;border-bottom:1px dashed var(--ink-3)}
+.marks a:hover{color:var(--gold-2)}
+
+/* 做事方式 */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:64px}
+.step{padding:20px;border-radius:16px;background:var(--card);border:1px solid var(--line);min-width:0}
+.step .n{font-family:var(--mono);color:var(--gold);font-size:13px}
+.step b{display:block;font-size:17px;margin:4px 0 6px}
+.step p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.7}
+
+/* 底部 */
+footer{position:relative;overflow:hidden;padding:32px;border-radius:22px;border:1px solid #f7a53140;background:radial-gradient(600px 260px at 100% 120%,#f7a53130,transparent 70%),var(--card);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;scroll-margin-top:72px}
+footer .big{font-size:24px;font-weight:900}
+footer .sub{color:var(--ink-2);font-size:14px;margin-top:4px}
+.contact{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);background:#0a0f17;color:var(--ink);text-decoration:none;font-size:14px}
+.btn:hover{border-color:var(--sky)}
+.btn.primary{background:linear-gradient(180deg,var(--gold-2),var(--gold));border-color:transparent;color:#2a1700;font-weight:800}
+
+@media (max-width:900px){
+ .hero-body{grid-template-columns:1fr;padding:0 20px 24px;gap:18px}
+ .id-card{min-width:0}
+ .skills,.method{grid-template-columns:1fr 1fr}
+ .mini-grid{grid-template-columns:1fr}
+ .case{grid-template-columns:1fr;gap:12px;padding:22px}
+ .topbar nav{display:none}
+ .topbar .dl{margin-left:auto}
 }
-:root[data-theme="dark"] {
-  --paper: #0f1817; --sheet: #15201f; --ink: #e3eeec; --ink-2: #9db3b0; --line: #29393a;
-  --accent: #f0a443; --accent-soft: #3a2a14; --teal: #6cc3bb; --teal-soft: #17302e;
-  --todo-bg: #4a3f0a; --todo-fg: #ffe58a; color-scheme: dark;
+@media (max-width:480px){
+ .avatar{width:104px;height:104px;margin-top:-58px}
+ .skills,.method{grid-template-columns:1fr}
+ .flow{flex-direction:column}
+ .arrow{flex-basis:22px;transform:rotate(90deg)}
+ .timeline{padding-left:26px}
+ .timeline:before{left:6px}
+ .era:before{left:-27px;width:14px;height:14px}
+ .era-card{padding:18px}
+ footer{padding:24px}
 }
-* { box-sizing: border-box; }
-body {
-  background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 0 64px;
-  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 32px 32px; background-attachment: fixed;
+@media (prefers-reduced-motion:no-preference){
+ .case,.mini,.era-card,.skill,.step{transition:border-color .2s,transform .2s}
+ .case:hover,.mini:hover,.era-card:hover{border-color:#f7a53155}
 }
-.wrap { max-width: 1040px; margin: 0 auto; }
-a { color: var(--teal); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.todo { background: var(--todo-bg); color: var(--todo-fg); padding: 0 4px; border-radius: 3px; font-size: .92em; }
-.draft-note { margin-top: 20px; padding: 10px 14px; border: 1px dashed var(--todo-fg); background: var(--todo-bg); color: var(--todo-fg); border-radius: 8px; font-size: 14px; }
-
-/* ---------- 头部 ---------- */
-header.hero { padding-block: 56px 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
-.kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; color: var(--teal); text-transform: uppercase; }
-h1 { font-family: var(--display); font-weight: 900; font-size: clamp(34px, 6vw, 60px); line-height: 1.15; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -.01em; }
-h1 em { font-style: normal; color: var(--accent); }
-.lede { max-width: 38em; color: var(--ink-2); font-size: 17px; margin: 0; }
-.id-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; min-width: 240px; font-size: 14px; }
-.id-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
-.id-card dt { color: var(--ink-2); }
-.id-card dd { margin: 0; font-weight: 500; }
-
-/* ---------- 能力条 ---------- */
-.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 56px; }
-.skill { background: var(--sheet); padding: 18px 18px 16px; min-width: 0; }
-.skill b { display: block; font-size: 16px; margin-bottom: 4px; }
-.skill span { color: var(--ink-2); font-size: 14px; line-height: 1.6; display: block; }
-.skill .tag { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
-
-/* ---------- 案例 ---------- */
-h2.section { font-size: 24px; font-weight: 900; margin: 0 0 20px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-h2.section small { font-weight: 400; font-size: 14px; color: var(--ink-2); }
-.case { display: grid; grid-template-columns: 200px 1fr; gap: 28px; background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
-.case-side { min-width: 0; }
-.case-side .no { font-family: var(--mono); font-size: 13px; color: var(--teal); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.case-side .no .num { font-size: 20px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
-.case-side h3 { font-size: 22px; font-weight: 900; line-height: 1.35; margin: 6px 0 10px; text-wrap: balance; }
-.case-side .role { font-size: 13px; color: var(--ink-2); }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); }
-.case-main { min-width: 0; }
-.case-main p { margin: 0 0 12px; max-width: 42em; }
-.label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); margin: 16px 0 6px; }
-.label:first-child { margin-top: 0; }
-ul.points { margin: 0 0 4px; padding-left: 1.2em; }
-ul.points li { margin-bottom: 4px; }
-
-/* 机制流程图 */
-.flow { display: flex; align-items: stretch; gap: 0; margin: 14px 0 6px; overflow-x: auto; padding-bottom: 4px; }
-.node { flex: 1 1 0; min-width: 130px; border: 1px solid var(--line); background: var(--paper); border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.55; }
-.node b { display: block; font-size: 12px; font-family: var(--mono); color: var(--ink-2); font-weight: 400; margin-bottom: 2px; letter-spacing: .06em; }
-.node.core { background: var(--accent-soft); border-color: var(--accent); }
-.arrow { flex: 0 0 26px; display: grid; place-items: center; color: var(--accent); font-family: var(--mono); }
-
-/* 数据 */
-.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 8px; }
-.metric { border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; min-width: 0; }
-.metric .v { font-size: 26px; font-weight: 900; line-height: 1.2; font-variant-numeric: tabular-nums; }
-.metric .k { font-size: 13px; color: var(--ink-2); }
-
-/* 小案例格 */
-.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
-.mini { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
-.mini h4 { margin: 0 0 4px; font-size: 17px; font-weight: 900; }
-.mini .sub { font-size: 13px; color: var(--teal); margin-bottom: 8px; }
-.mini p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
-
-/* 做事方法 */
-.method { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 56px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--sheet); }
-.step { padding: 20px; border-right: 1px solid var(--line); min-width: 0; }
-.step:last-child { border-right: none; }
-.step .n { font-family: var(--mono); color: var(--accent); font-size: 13px; }
-.step b { display: block; font-size: 17px; margin: 4px 0 6px; }
-.step p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
-
-footer { border-top: 1px solid var(--line); padding-top: 28px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
-footer .big { font-size: 22px; font-weight: 900; }
-.contact { display: flex; gap: 10px; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); text-decoration: none; font-size: 14px; }
-.btn.primary { background: var(--teal); border-color: var(--teal); color: var(--sheet); }
-
-@media (max-width: 860px) {
-  header.hero { grid-template-columns: 1fr; }
-  .skills, .method { grid-template-columns: 1fr 1fr; }
-  .step:nth-child(2) { border-right: none; }
-  .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .mini-grid { grid-template-columns: 1fr; }
-  .case { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
-}
-@media (max-width: 480px) {
-  .skills, .method { grid-template-columns: 1fr; }
-  .step { border-right: none; border-bottom: 1px solid var(--line); }
-  .step:last-child { border-bottom: none; }
-  .flow { flex-direction: column; }
-  .arrow { flex-basis: 22px; transform: rotate(90deg); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .case, .mini { transition: border-color .2s; }
-  .case:hover, .mini:hover { border-color: var(--teal); }
+/* 打印 / 导出 PDF：保持深色主题 */
+@media print{
+ @page{margin:0}
+ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body:before{position:absolute}
+ .topbar{display:none}
+ .wrap{padding:28px 28px 20px}
+ .contact a[download]{display:none}
+ .case,.era,.mini,.step,.skill,.metric{break-inside:avoid}
+ h2.section{break-after:avoid}
+ .hero{margin-top:0}
 }
 </style>
 </head>
 <body>
+<header class="topbar"><div class="in">
+ <a class="brand" href="#top"><img src="https://pbs.twimg.com/profile_images/1995517992780939265/yB6SjfVD_400x400.jpg" alt="">Denzo · Crypto豪哥</a>
+ <nav aria-label="页面导航"><a href="#work">作品</a><a href="#journey">经历</a><a href="#method">方法</a><a href="#contact">联系</a></nav>
+ <a class="dl" href="Denzo-portfolio.pdf" download="Denzo-作品集.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下载</a>
+</div></header>
 
-<div class="wrap">
-  <header class="hero">
-    <div>
-      <div class="kicker">Growth · Mechanism · Tools</div>
-      <h1>用<em>产品和机制</em>驱动增长</h1>
-      <p class="lede">我是 Denzo（Crypto豪哥），2021 年进入币圈，做过预测市场平台的增长与活动，也独立做了几款有付费用户的效率工具。我喜欢把重复的运营动作变成规则和工具：设计一次，让增长自己持续发生。这里是我做过的项目，每个都写清楚了问题、机制和结果。</p>
-    </div>
-    <div class="id-card">
-      <dl>
-        <dt>方向</dt><dd>增长产品 / 策略运营</dd>
-        <dt>入圈</dt><dd class="mono">2021</dd>
-        <dt>X</dt><dd><a href="https://x.com/BTC_2044" target="_blank" rel="noopener">@BTC_2044</a></dd>
-        <dt>TG</dt><dd><a href="https://t.me/DJ2044" target="_blank" rel="noopener">@DJ2044</a></dd>
-      </dl>
-    </div>
-  </header>
+<div class="wrap" id="top">
+ <section class="hero" aria-label="个人简介">
+  <div class="banner" role="img" aria-label="一只戴墨镜的猫在月球上收集比特币"></div>
+  <div class="hero-body">
+   <div>
+    <div class="avatar"><img src="https://pbs.twimg.com/profile_images/1995517992780939265/yB6SjfVD_400x400.jpg" alt="Crypto豪哥的头像"></div>
+    <div class="kicker">Growth · Mechanism · Tools</div>
+    <h1>用<em>产品和机制</em>驱动增长</h1>
+    <p class="lede">我是 Denzo（Crypto豪哥），2021 年从比特币定投入圈，经历过铭文、积分空投、Meme 与预测市场几轮周期。现在负责预测市场平台的增长与活动，也独立做了几款有付费用户的产品。我喜欢把重复的运营动作变成规则和工具：设计一次，让增长自己持续发生。</p>
+   </div>
+   <div class="id-card">
+    <dl>
+     <dt>方向</dt><dd>增长产品 / 策略运营</dd>
+     <dt>入圈</dt><dd class="mono">2021</dd>
+     <dt>邮箱</dt><dd><a href="mailto:dengzid2023@gmail.com">dengzid2023@gmail.com</a></dd>
+     <dt>X</dt><dd><a href="https://x.com/BTC_2044" target="_blank" rel="noopener">@BTC_2044</a></dd>
+     <dt>TG</dt><dd><a href="https://t.me/DJ2044" target="_blank" rel="noopener">@DJ2044</a></dd>
+    </dl>
+   </div>
+  </div>
+ </section>
 
-  <section class="skills" aria-label="核心能力">
-    <div class="skill"><div class="tag">MECHANISM</div><b>机制设计</b><span>活动规则、激励与分成、防刷与去重，让参与者自己动起来</span></div>
-    <div class="skill"><div class="tag">GROWTH</div><b>增长运营</b><span>平台官号增长、注册转化活动、内容挖矿玩法，盯数据做复盘</span></div>
-    <div class="skill"><div class="tag">BUILD</div><b>AI 辅助开发</b><span>用 AI 做出可用的产品：Chrome 插件、桌面客户端、云端服务、小程序</span></div>
-    <div class="skill"><div class="tag">CREATOR</div><b>懂创作者</b><span>自己在 X、币安广场、欧易星球持续产出，知道创作者要什么</span></div>
-  </section>
+ <section class="skills" aria-label="核心能力">
+  <div class="skill"><div class="tag">MECHANISM</div><b>机制设计</b><span>活动规则、激励与分成、防刷与去重，让参与者自己动起来</span></div>
+  <div class="skill"><div class="tag">GROWTH</div><b>增长运营</b><span>平台官号增长、注册转化活动、内容挖矿玩法，盯数据做复盘</span></div>
+  <div class="skill"><div class="tag">BUILD</div><b>AI 辅助开发</b><span>用 AI 做出可用的产品：Chrome 插件、桌面客户端、云端服务、小程序</span></div>
+  <div class="skill"><div class="tag">CRYPTO NATIVE</div><b>懂用户</b><span>五年一线参与：定投、空投、Meme、合约、预测市场都亲手做过</span></div>
+ </section>
 
-  <h2 class="section">核心案例 <small>按「问题 → 机制 → 结果」整理</small></h2>
-
-  <!-- 案例 0：囤比特币之路 -->
-  <article class="case">
+ <h2 class="section" id="work"><span class="idx">01</span>核心案例 <small>按「问题 → 机制 → 结果」整理</small></h2>
+ <article class="case" id="case-game">
     <div class="case-side">
       <div class="no"><span class="num">CASE 01</span>独立产品</div>
-      <h3>囤比特币之路<br><span style="font-size:.8em;font-weight:500;opacity:.7">THE BITCOIN JOURNEY</span></h3>
+      <h3>囤比特币之路<span>THE BITCOIN JOURNEY</span></h3>
       <div class="role">独立策划、开发并运营 · <a href="https://tunbtcroad.com/" target="_blank" rel="noopener">tunbtcroad.com</a> · <a href="https://t.me/BitcoinJourneyBot?startapp" target="_blank" rel="noopener">TG 小游戏</a></div>
       <div class="chips"><span class="chip">在线游戏</span><span class="chip">多人社交</span><span class="chip">任务体系</span><span class="chip">社区运营</span></div>
     </div>
@@ -203,16 +251,14 @@ footer .big { font-size: 22px; font-weight: 900; }
       </ul>
       <div class="label">结果</div>
       <div class="metrics">
-        <div class="metric"><div class="v mono">23</div><div class="k">注册玩家</div></div>
-        <div class="metric"><div class="v mono">192 局</div><div class="k">累计对局</div></div>
+        <div class="metric"><div class="v mono">24</div><div class="k">注册玩家</div></div>
+        <div class="metric"><div class="v mono">197 局</div><div class="k">累计开局</div></div>
         <div class="metric"><div class="v mono">~20 分钟</div><div class="k">平均每局时长</div></div>
-        <div class="metric"><div class="v mono">70%</div><div class="k">开局后打完的比例</div></div>
+        <div class="metric"><div class="v mono">71%</div><div class="k">开局后打完的比例</div></div>
       </div>
     </div>
   </article>
-
-  <!-- 案例 1 -->
-  <article class="case">
+ <article class="case" id="case-planet">
     <div class="case-side">
       <div class="no"><span class="num">CASE 02</span>商业化</div>
       <h3>星球创作者内容助手</h3>
@@ -246,9 +292,7 @@ footer .big { font-size: 22px; font-weight: 900; }
       </div>
     </div>
   </article>
-
-  <!-- 案例 2 -->
-  <article class="case">
+ <article class="case" id="case-omenx">
     <div class="case-side">
       <div class="no"><span class="num">CASE 03</span>增长活动</div>
       <h3>Omenx 广场增长与互动活动</h3>
@@ -281,9 +325,7 @@ footer .big { font-size: 22px; font-weight: 900; }
       </div>
     </div>
   </article>
-
-  <!-- 案例 3 -->
-  <article class="case">
+ <article class="case" id="case-sync">
     <div class="case-side">
       <div class="no"><span class="num">CASE 04</span>效率工具</div>
       <h3>帖子同步助手</h3>
@@ -314,9 +356,7 @@ footer .big { font-size: 22px; font-weight: 900; }
       </div>
     </div>
   </article>
-
-  <!-- 案例 4 -->
-  <article class="case">
+ <article class="case" id="case-usd8">
     <div class="case-side">
       <div class="no"><span class="num">CASE 05</span>效率工具</div>
       <h3>USD8 排队提交助手</h3>
@@ -349,8 +389,8 @@ footer .big { font-size: 22px; font-weight: 900; }
     </div>
   </article>
 
-  <h2 class="section">更多项目 <small>用 AI 把想法做成能用的产品</small></h2>
-  <section class="mini-grid">
+ <h2 class="section"><span class="idx">02</span>更多项目 <small>用 AI 把想法做成能用的产品</small></h2>
+ <section class="mini-grid">
     <div class="mini">
       <h4>走呗走呗</h4>
       <div class="sub">微信小程序 · 已上线</div>
@@ -368,25 +408,66 @@ footer .big { font-size: 22px; font-weight: 900; }
     </div>
   </section>
 
-  <h2 class="section">我的做事方式</h2>
-  <section class="method">
-    <div class="step"><div class="n">01</div><b>找到重复</b><p>从自己每天被卡住的环节出发，找到值得自动化的重复动作。</p></div>
-    <div class="step"><div class="n">02</div><b>拆清规则</b><p>先弄懂平台和活动的规则、限制与激励，再决定怎么设计。</p></div>
-    <div class="step"><div class="n">03</div><b>真实环境验证</b><p>直接在真实网站上跑，用截图和诊断定位问题，小步快速迭代。</p></div>
-    <div class="step"><div class="n">04</div><b>数据复盘</b><p>每个项目都留下数据和结论，写进日报、周报和推特复盘。</p></div>
-  </section>
+ <h2 class="section" id="journey"><span class="idx">03</span>我的路径 <small>2021 → 现在</small></h2>
+ <section class="timeline" aria-label="经历时间线">
+  <article class="era">
+   <div class="era-card">
+    <div class="era-head"><span class="yr">2026 — 至今</span><h3>认识自己</h3><span class="tagline">找到最擅长的事：用产品和机制驱动增长</span></div>
+    <p>开始认真运营个人 X 账号，在持续输出和复盘里看清了自己的特质：比起追热点写快讯，我更擅长设计规则、机制和工具。于是把方向定在「产品驱动增长」，一边在一线做增长，一边用 AI 把想法做成产品。</p>
+    <ul class="marks">
+     <li><span class="mono">2026</span>运营个人账号 @BTC_2044</li>
+     <li><span class="mono">2026</span><a href="#case-omenx">负责 Omenx 币安广场增长与活动</a></li>
+     <li><span class="mono">2026</span><a href="#case-game">独立开发《囤比特币之路》</a></li>
+     <li><span class="mono">2026</span><a href="#case-planet">上线付费产品「星球创作者内容助手」</a></li>
+     <li><span class="mono">2026</span><a href="#case-sync">自研多款效率工具</a></li>
+    </ul>
+   </div>
+  </article>
+  <article class="era past">
+   <div class="era-card">
+    <div class="era-head"><span class="yr">2023 — 2025</span><h3>三年历练</h3><span class="tagline">自由职业做电商，同时在链上一线摸爬滚打</span></div>
+    <p>这三年以自由职业为主，做电商、经营自己的网店，从选品、上架、引流到客服和复购都自己跑；同时把币圈几轮主要热潮都亲手参与了一遍：撸空投、打链上土狗、追热点、做合约。赚过也亏过，最大的收获是看懂了币圈的生态和用户：<b>人为什么会冲进来、被什么留下、又因为什么离开</b>。</p>
+    <ul class="marks">
+     <li><span class="mono">2023</span>比特币铭文热潮</li>
+     <li><span class="mono">2023—24</span>DEX 刷积分、撸空投</li>
+     <li><span class="mono">2024</span>Solana Meme 热潮、链上土狗</li>
+     <li><span class="mono">2025</span>特朗普 Meme 币</li>
+     <li><span class="mono">2025</span>币安中文 Meme</li>
+     <li><span class="mono">2025</span>预测市场交易</li>
+     <li><span class="mono">全程</span>合约交易</li>
+    </ul>
+    <div class="gain"><b>带到现在的东西：</b>开网店让我第一次完整跑通「流量 → 转化 → 复购」，知道每一步漏斗都要算账；混迹链上则给了我用户视角。设计一个活动或激励时，我会先问自己「如果我是那个撸毛的人 / 追 Meme 的人，我会怎么玩、怎么刷」，这让我设计的规则更难被薅、也更能打动真实用户。</div>
+   </div>
+  </article>
+  <article class="era past">
+   <div class="era-card">
+    <div class="era-head"><span class="yr">2021 — 2022</span><h3>两年筑基</h3><span class="tagline">从定投比特币入圈</span></div>
+    <p>加入李笑来的定投课堂（定投 Box），系统学习比特币定投，建立了「长期主义 + 定投」的底层理念。这个理念一直影响着现在的我。</p>
+    <div class="gain"><b>带到现在的东西：</b>后来的《囤比特币之路》，就是把这套理念做成了一款能和朋友一起玩的游戏，让新人在一局局选择里自己体会「1 BTC = 1 BTC」。</div>
+   </div>
+  </article>
+ </section>
 
-  <footer>
-    <div>
-      <div class="big">专注增长产品 / 策略运营方向</div>
-      <div style="color:var(--ink-2);font-size:14px">欢迎通过 X 或 Telegram 联系：<span class="mono">@DJ2044</span></div>
-    </div>
-    <div class="contact">
-      <a class="btn primary" href="https://x.com/BTC_2044" target="_blank" rel="noopener">X · @BTC_2044</a>
-      <a class="btn" href="https://t.me/DJ2044" target="_blank" rel="noopener">Telegram · @DJ2044</a>
-    </div>
-  </footer>
+ <h2 class="section" id="method"><span class="idx">04</span>我的做事方式</h2>
+ <section class="method">
+  <div class="step"><div class="n">01</div><b>找到重复</b><p>从自己每天被卡住的环节出发，找到值得自动化的重复动作。</p></div>
+  <div class="step"><div class="n">02</div><b>拆清规则</b><p>先弄懂平台和活动的规则、限制与激励，再决定怎么设计。</p></div>
+  <div class="step"><div class="n">03</div><b>真实环境验证</b><p>直接在真实网站上跑，用截图和诊断定位问题，小步快速迭代。</p></div>
+  <div class="step"><div class="n">04</div><b>数据复盘</b><p>每个项目都留下数据和结论，写进日报、周报和推特复盘。</p></div>
+ </section>
+
+ <footer id="contact">
+  <div>
+   <div class="big">专注增长产品 / 策略运营方向</div>
+   <div class="sub">欢迎通过邮箱、X 或 Telegram 联系我</div>
+  </div>
+  <div class="contact">
+   <a class="btn primary" href="mailto:dengzid2023@gmail.com">✉ dengzid2023@gmail.com</a>
+   <a class="btn" href="https://x.com/BTC_2044" target="_blank" rel="noopener">X · @BTC_2044</a>
+   <a class="btn" href="https://t.me/DJ2044" target="_blank" rel="noopener">Telegram · @DJ2044</a>
+   <a class="btn" href="Denzo-portfolio.pdf" download="Denzo-作品集.pdf">下载</a>
+  </div>
+ </footer>
 </div>
-
 </body>
 </html>
