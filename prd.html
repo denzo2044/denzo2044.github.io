@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05070c">
+<title>PRD 样例 · 新人礼包与新手实战 | Denzo</title>
+<meta name="description" content="Denzo 的产品需求文档样例：《囤比特币之路》新人礼包与新手实战教程，包含背景、目标、方案流程、规则边界、数据指标、迭代计划与产品路线图。">
+<link rel="icon" href="https://pbs.twimg.com/profile_images/1995517992780939265/yB6SjfVD_400x400.jpg">
+<meta property="og:title" content="PRD 样例 · 新人礼包与新手实战">
+<meta property="og:image" content="https://denzo2044.github.io/prd-flow.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* 视觉：深空夜色 + 地平线日出的橙金光 + 头像的天蓝描边，和 X 主页（@BTC_2044）同一套色调 */
+:root{
+ --space:#05070c;--space-2:#0a0e17;--card:#0e131d;--card-2:#121a27;
+ --ink:#f4f6fa;--ink-2:#cfd6e1;--ink-3:#a7b1c0;--line:#1d2636;--line-2:#2a3548;
+ --gold:#f7a531;--gold-2:#ffcc6e;--gold-soft:#f7a5311f;--sky:#9fd2ff;--sky-soft:#9fd2ff1a;
+ --display:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+ --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--space)}
+body{margin:0;background:var(--space);color:var(--ink);font-family:var(--display);font-size:16.5px;line-height:1.8;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(1.2px 1.2px at 12% 18%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 27% 62%,#fff6 50%,transparent 51%),
+ radial-gradient(1.4px 1.4px at 44% 8%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 63% 41%,#fff5 50%,transparent 51%),
+ radial-gradient(1.2px 1.2px at 78% 22%,#fff7 50%,transparent 51%),radial-gradient(1px 1px at 88% 70%,#fff5 50%,transparent 51%),
+ radial-gradient(1px 1px at 6% 84%,#fff5 50%,transparent 51%),radial-gradient(1.3px 1.3px at 53% 90%,#fff6 50%,transparent 51%),
+ radial-gradient(1000px 520px at 85% -8%,#f7a5311c,transparent 60%),radial-gradient(800px 600px at -10% 40%,#9fd2ff0d,transparent 60%)}
+img{max-width:100%;display:block}
+a{color:var(--sky);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 72px max(16px,env(safe-area-inset-right,0px))}
+
+/* 顶部导航 */
+.topbar{position:sticky;top:0;z-index:20;background:#05070ccc;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #ffffff0d}
+.topbar .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:18px}
+.topbar .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);text-decoration:none;font-size:15px}
+.topbar .brand img{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky)}
+.topbar nav{display:flex;gap:16px;margin-left:auto;font-size:14px}
+.topbar nav a{color:var(--ink-2);text-decoration:none}
+.topbar nav a:hover{color:var(--ink)}
+.dl{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#2a1700;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 18px #f7a53140;white-space:nowrap}
+.dl svg{width:15px;height:15px}
+
+/* 头部：横幅 + 头像，像 X 主页 */
+.hero{margin-top:24px;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.banner{position:relative;height:clamp(150px,30vw,300px);background:#000 url(https://pbs.twimg.com/profile_banners/1726642213281787904/1794143534/1500x500) center 30%/cover}
+.banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#0e131d 100%)}
+.hero-body{position:relative;padding:0 32px 30px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.avatar{width:132px;height:132px;margin-top:-78px;border-radius:50%;padding:5px;background:linear-gradient(180deg,#d6ecff,#7fbef5);box-shadow:0 10px 30px #000a;position:relative;z-index:1}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--card)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-top:14px}
+h1{font-weight:900;font-size:clamp(32px,5.4vw,56px);line-height:1.15;margin:8px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:40em;color:var(--ink-2);font-size:17px;margin:0}
+.id-card{min-width:250px;padding:18px 20px;border-radius:14px;background:var(--card-2);border:1px solid var(--line-2);font-size:14px}
+.id-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px}
+.id-card dt{color:var(--ink-3)}
+.id-card dd{margin:0;font-weight:500;word-break:break-all}
+
+/* 能力条 */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 64px}
+.skill{padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--line);min-width:0}
+.skill .tag{font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:.12em;margin-bottom:6px}
+.skill b{display:block;font-size:16px;margin-bottom:4px}
+.skill span{display:block;color:var(--ink-2);font-size:14px;line-height:1.6}
+
+/* 章节标题 */
+[id^=case-]{scroll-margin-top:72px}
+h2.section{font-size:26px;font-weight:900;margin:0 0 22px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;scroll-margin-top:72px}
+h2.section .idx{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.1em}
+h2.section small{font-weight:400;font-size:14.5px;color:var(--ink-2)}
+
+/* 案例 */
+.case{display:grid;grid-template-columns:210px 1fr;gap:30px;padding:30px;margin-bottom:18px;border-radius:18px;background:linear-gradient(180deg,var(--card),#0b1019);border:1px solid var(--line);position:relative;overflow:hidden}
+.case:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),transparent)}
+.case-side{min-width:0}
+.case-side .no{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.case-side .num{font-size:18px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.case-side h3{font-size:22px;font-weight:900;line-height:1.35;margin:8px 0 10px;text-wrap:balance}
+.case-side h3 span{display:block;font-size:12px;font-weight:500;color:var(--ink-3);letter-spacing:.12em;margin-top:2px}
+.case-side .role{font-size:13px;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--sky-soft);color:var(--sky);border:1px solid #9fd2ff26}
+.case-main{min-width:0}
+.case-main p{margin:0 0 12px;max-width:44em;color:#e9edf3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold);margin:18px 0 6px}
+.label:first-child{margin-top:0}
+ul.points{margin:0 0 4px;padding-left:1.2em;color:#e9edf3}
+ul.points li{margin-bottom:5px}
+ul.points li::marker{color:var(--gold)}
+.flow{display:flex;align-items:stretch;margin:14px 0 8px;overflow-x:auto;padding-bottom:4px}
+.node{flex:1 1 0;min-width:130px;padding:10px 12px;border-radius:12px;background:#0a0f17;border:1px solid var(--line-2);font-size:13.5px;line-height:1.55;color:#e9edf3}
+.node b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--ink-3);letter-spacing:.1em;margin-bottom:3px}
+.node.core{background:var(--gold-soft);border-color:#f7a53188}
+.node.core b{color:var(--gold-2)}
+.arrow{flex:0 0 26px;display:grid;place-items:center;color:var(--gold);font-family:var(--mono)}
+.metrics{overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:8px}
+.metric{padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line);min-width:0}
+.metric .v{font-size:24px;font-weight:900;line-height:1.25;color:var(--gold-2)}
+.metric .k{font-size:13px;color:var(--ink-2)}
+
+/* 小项目 */
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 64px}
+.mini{padding:20px;border-radius:16px;background:var(--card);border:1px solid var(--line);min-width:0}
+.mini h4{margin:0 0 4px;font-size:17px;font-weight:900}
+.mini .sub{font-size:13px;color:var(--sky);margin-bottom:8px}
+.mini p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.7}
+
+/* 时间线 */
+.timeline{position:relative;margin:0 0 64px;padding-left:34px}
+.timeline:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),#9fd2ff66 55%,#9fd2ff10)}
+.era{position:relative;margin-bottom:22px}
+.era:before{content:"";position:absolute;left:-31px;top:24px;width:16px;height:16px;border-radius:50%;background:var(--space);border:3px solid var(--gold);box-shadow:0 0 0 4px #f7a53122,0 0 18px #f7a53166}
+.era.past:before{border-color:var(--sky);box-shadow:0 0 0 4px #9fd2ff1a}
+.era-card{padding:22px 24px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.era-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.era-head .yr{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.era.past .era-head .yr{color:var(--sky)}
+.era-head h3{margin:0;font-size:21px;font-weight:900}
+.era-head .tagline{font-size:13px;color:var(--ink-3)}
+.era p{margin:6px 0 10px;color:#e9edf3;max-width:46em}
+.era .gain{margin:12px 0 0;padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.era .gain b{color:var(--gold-2);font-weight:700}
+.marks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.marks li{display:flex;align-items:baseline;gap:7px;padding:5px 11px;border-radius:999px;background:#0a0f17;border:1px solid var(--line-2);font-size:13px}
+.marks li .mono{font-size:11.5px;color:var(--ink-3)}
+.marks a{color:inherit;text-decoration:none;border-bottom:1px dashed var(--ink-3)}
+.marks a:hover{color:var(--gold-2)}
+
+/* 做事方式 */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:64px}
+.step{padding:20px;border-radius:16px;background:var(--card);border:1px solid var(--line);min-width:0}
+.step .n{font-family:var(--mono);color:var(--gold);font-size:13px}
+.step b{display:block;font-size:17px;margin:4px 0 6px}
+.step p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.7}
+
+/* 底部 */
+footer{position:relative;overflow:hidden;padding:32px;border-radius:22px;border:1px solid #f7a53140;background:radial-gradient(600px 260px at 100% 120%,#f7a53130,transparent 70%),var(--card);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;scroll-margin-top:72px}
+footer .big{font-size:24px;font-weight:900}
+footer .sub{color:var(--ink-2);font-size:14px;margin-top:4px}
+.contact{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);background:#0a0f17;color:var(--ink);text-decoration:none;font-size:14px}
+.btn:hover{border-color:var(--sky)}
+.btn.primary{background:linear-gradient(180deg,var(--gold-2),var(--gold));border-color:transparent;color:#2a1700;font-weight:800}
+
+@media (max-width:900px){
+ .hero-body{grid-template-columns:1fr;padding:0 20px 24px;gap:18px}
+ .id-card{min-width:0}
+ .skills,.method{grid-template-columns:1fr 1fr}
+ .mini-grid{grid-template-columns:1fr}
+ .case{grid-template-columns:1fr;gap:12px;padding:22px}
+ .topbar nav{display:none}
+ .topbar .dl{margin-left:auto}
+}
+@media (max-width:480px){
+ .avatar{width:104px;height:104px;margin-top:-58px}
+ .skills,.method{grid-template-columns:1fr}
+ .flow{flex-direction:column}
+ .arrow{flex-basis:22px;transform:rotate(90deg)}
+ .timeline{padding-left:26px}
+ .timeline:before{left:6px}
+ .era:before{left:-27px;width:14px;height:14px}
+ .era-card{padding:18px}
+ footer{padding:24px}
+}
+@media (prefers-reduced-motion:no-preference){
+ .case,.mini,.era-card,.skill,.step{transition:border-color .2s,transform .2s}
+ .case:hover,.mini:hover,.era-card:hover{border-color:#f7a53155}
+}
+/* 打印 / 导出 PDF：保持深色主题 */
+@media print{
+ @page{margin:0}
+ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body:before{position:absolute}
+ .topbar{display:none}
+ .wrap{padding:28px 28px 20px}
+ .contact a[download]{display:none}
+ .case,.era,.mini,.step,.skill,.metric{break-inside:avoid}
+ h2.section{break-after:avoid}
+ .hero{margin-top:0}
+}
+
+/* 复制邮箱提示 */
+.copy-toast{position:fixed;left:50%;bottom:28px;z-index:50;transform:translate(-50%,20px);opacity:0;padding:10px 18px;border-radius:999px;background:#121a27;border:1px solid #f7a53177;color:var(--ink);font-size:14px;box-shadow:0 10px 30px #000a;transition:opacity .2s,transform .2s;pointer-events:none}
+.copy-toast.show{opacity:1;transform:translate(-50%,0)}
+@media print{.copy-toast{display:none}}
+
+/* ===== 美化第二轮：首屏数据条、按钮、截图、折叠、手机端 ===== */
+.nw{white-space:nowrap}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 0}
+.proof a{display:block;padding:16px 18px;border-radius:14px;text-decoration:none;background:linear-gradient(180deg,#f7a53114,#f7a53105);border:1px solid #f7a53140;transition:border-color .2s,transform .2s}
+.proof a:hover{border-color:#f7a531aa;transform:translateY(-2px)}
+.proof b{display:block;font-size:26px;font-weight:800;color:var(--gold-2);line-height:1.2}
+.proof span{display:block;margin-top:4px;font-size:13.5px;color:var(--ink-2)}
+.skills{margin-top:12px}
+.shot{margin:0 0 18px;border-radius:14px;overflow:hidden;border:1px solid var(--line-2);background:#0a0f17}
+.shot img{width:100%;height:auto;max-height:420px;object-fit:cover;object-position:top center}
+.shot.popup{float:right;width:300px;margin:0 0 14px 24px;box-shadow:0 16px 40px #000a}
+.shot.popup img{max-height:none;object-fit:initial}
+.shot.popup+.label{margin-top:0}
+.case#case-sync .case-main:after,.case#case-usd8 .case-main:after{content:"";display:block;clear:both}
+@media (max-width:700px){.shot.popup{float:none;width:min(300px,100%);margin:0 auto 16px}}
+.shot figcaption{padding:8px 14px;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line)}
+details.more{margin-top:14px;border-top:1px dashed var(--line-2);padding-top:12px}
+details.more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--sky);font-weight:700}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary:before{content:"＋";font-weight:400}
+details.more[open] summary:before{content:"－"}
+details.more[open] summary{margin-bottom:6px}
+.mbar{display:none}
+/* 滚动渐显（仅在支持 JS 且不偏好减少动效时） */
+html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+html.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none}}
+@media (max-width:900px){.proof{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){
+ body{padding-bottom:76px}
+ .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#05070cf0;border-top:1px solid #ffffff14;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+ .mbar a{flex:1;justify-content:center}
+}
+@media (max-width:480px){
+ .proof b{font-size:22px}
+ .flow{display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow:visible}
+ .flow .arrow{display:none}
+ .node{min-width:0}
+ .hero-cta .btn{flex:1;justify-content:center}
+}
+@media print{
+ html.js .reveal{opacity:1!important;transform:none!important}
+ .mbar,.hero-cta{display:none!important}
+ details.more summary{display:none}
+}
+.id-card .fans{display:inline-block;margin-left:8px;padding:0 7px;border-radius:999px;background:#f7a5311f;color:var(--gold-2);font-size:12px;font-weight:700;vertical-align:1px}
+</style>
+<style>
+.doc{max-width:900px}
+.doc-head{margin:36px 0 34px}
+.doc-head h1{font-size:clamp(30px,5vw,46px);margin:10px 0 14px}
+.doc-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 0}
+.doc-meta div{padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.doc-meta dt{font-size:12.5px;color:var(--ink-3)}.doc-meta dd{margin:2px 0 0;font-weight:700;font-size:14.5px}
+.doc-sec{margin:0 0 30px;padding:24px 26px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.doc-sec h2{font-size:21px;margin:0 0 14px;display:flex;gap:10px;align-items:baseline}
+.doc-sec h2 .idx{font-family:var(--mono);font-size:13px;color:var(--gold)}
+.doc-sec h3{font-size:16px;margin:20px 0 10px}
+.doc-sec .note{margin:12px 0 0;font-size:14px;color:var(--ink-2)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{padding:14px 16px;border-radius:12px;background:#0a0f17;border:1px solid var(--line)}
+.card b{display:block;color:var(--gold-2);margin-bottom:4px}.card p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.7}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl th{color:var(--ink-3);font-weight:600;font-size:13px}
+.tbl td:first-child{white-space:nowrap;color:var(--gold-2);font-weight:700}
+.road{display:grid;grid-template-columns:1.6fr 1fr;gap:12px}
+.lane{padding:16px 18px;border-radius:12px;background:#0a0f17;border:1px solid var(--line)}
+.lane.next{border-style:dashed}
+.lane h3{margin:0 0 10px;font-size:15px;color:var(--gold-2)}
+.lane ul{margin:0;padding-left:1.1em;display:grid;gap:7px;font-size:14px;color:var(--ink-2)}
+.lane li b{color:var(--ink);margin-right:6px}
+.shot{margin:18px 0 0}.shot img{max-height:none}
+.doc-foot{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 40px}
+@media (max-width:760px){.doc-meta,.cards,.road{grid-template-columns:1fr 1fr}.road{grid-template-columns:1fr}.doc-sec{padding:18px}.tbl{font-size:13px}.tbl td:first-child{white-space:normal}}
+@media (max-width:480px){.doc-meta,.cards{grid-template-columns:1fr}}
+@media print{.topbar{display:none}.doc-sec{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="in">
+ <a class="brand" href="./"><img src="https://pbs.twimg.com/profile_images/1995517992780939265/yB6SjfVD_400x400.jpg" alt="">Denzo · Crypto豪哥</a>
+ <nav aria-label="页面导航"><a href="#goal">目标</a><a href="#solution">方案</a><a href="#rules">规则</a><a href="#metrics">指标</a><a href="#roadmap">路线图</a></nav>
+ <a class="dl" href="./">← 返回作品集</a>
+</div></header>
+
+<div class="wrap doc">
+ <section class="doc-head">
+  <div class="kicker">PRD 样例 · 已上线功能</div>
+  <h1>新人礼包 + 新手实战教程</h1>
+  <p class="lede">《囤比特币之路》的新玩家引导功能。从玩家反馈「不知道怎么玩」出发，用一局 1 分钟的脚本化实战带新人跑通核心循环，完成后发放新人礼包。这份文档按我实际做这个功能时的思路整理，功能已上线。</p>
+  <dl class="doc-meta">
+   <div><dt>产品</dt><dd>囤比特币之路（网页 + Telegram 小游戏）</dd></div>
+   <div><dt>负责人</dt><dd>Denzo（需求、设计、开发、上线）</dd></div>
+   <div><dt>状态</dt><dd>已上线 · 2026.11</dd></div>
+   <div><dt>周期</dt><dd>需求到上线 1 天</dd></div>
+  </dl>
+ </section>
+
+ <section class="doc-sec" id="goal">
+  <h2><span class="idx">01</span>背景与问题</h2>
+  <ul class="points">
+   <li><b>现象：</b>玩家反馈新人进入游戏后「不知道怎么玩」。完整规则有 30 轮、职业、事件、拍卖、合约、保障等，第一局信息量太大。</li>
+   <li><b>影响：</b>新人如果第一局就迷失，很难留下来；而这款游戏的增长依赖「拉朋友同桌」，新人流失会直接拖慢邀请裂变。</li>
+   <li><b>判断：</b>与其写更长的说明文档，不如让新人亲手玩一遍最核心的循环：<b>掷骰 → 触发事件 → 现金变多 → 换成 BTC → 达成目标</b>。</li>
+  </ul>
+ </section>
+
+ <section class="doc-sec">
+  <h2><span class="idx">02</span>目标与成功标准</h2>
+  <div class="metrics">
+   <div class="metric"><div class="v">≤ 1 分钟</div><div class="k">教程时长，最多 3 次掷骰</div></div>
+   <div class="metric"><div class="v">核心循环</div><div class="k">新人完整走一遍「赚钱 → 买币 → 达标」</div></div>
+   <div class="metric"><div class="v">转化</div><div class="k">游客完成教程后被引导去注册领取礼包</div></div>
+  </div>
+  <p class="note">不追求把所有规则讲完：合约、保障、拍卖等进阶玩法，放到教程结尾的「真实对局要点」里一句话带过，在真实对局中再遇到。</p>
+ </section>
+
+ <section class="doc-sec">
+  <h2><span class="idx">03</span>目标用户与场景</h2>
+  <div class="cards">
+   <div class="card"><b>首次打开的游客</b><p>从朋友的邀请链接或 TG 小游戏进来，还没注册。要能先玩教程，礼包作为注册理由。</p></div>
+   <div class="card"><b>刚注册的新玩家</b><p>想马上开一局，但对规则没有概念。教程做完直接领奖，信心和 Cash 一起到位。</p></div>
+   <div class="card"><b>已经会玩的老玩家</b><p>同样能领一次礼包（避免老用户觉得被区别对待）；领完后入口移到「设置 → 新手教程」，随时复习。</p></div>
+  </div>
+ </section>
+
+ <section class="doc-sec" id="solution">
+  <h2><span class="idx">04</span>方案与流程</h2>
+  <div class="flow" role="list">
+   <div class="node" role="listitem"><b>入口</b>首页、联机大厅、结算页右侧的礼包图标；设置菜单常驻「新手教程」</div>
+   <div class="arrow" aria-hidden="true">→</div>
+   <div class="node" role="listitem"><b>礼包卡片</b>展示奖励（288 Cash + 头像框）和两步任务</div>
+   <div class="arrow" aria-hidden="true">→</div>
+   <div class="node core" role="listitem"><b>新手实战</b>小棋盘、3 次固定点数掷骰、向导逐步提示</div>
+   <div class="arrow" aria-hidden="true">→</div>
+   <div class="node" role="listitem"><b>领取</b>已登录直接领；游客引导登录，进度保存在本机</div>
+  </div>
+  <figure class="shot"><img src="prd-flow.jpg" alt="新人礼包与新手实战的四个关键界面：礼包卡片、发薪日事件、买入 BTC、练习完成" loading="lazy"><figcaption>关键界面：礼包卡片 → 发薪日 → 买入 BTC → 练习完成</figcaption></figure>
+  <h3>教程脚本（3 次掷骰）</h3>
+  <table class="tbl">
+   <thead><tr><th>步骤</th><th>落点</th><th>玩家学到什么</th><th>数值</th></tr></thead>
+   <tbody>
+    <tr><td>开场</td><td>—</td><td>目标是囤到 BTC，现金不算进度</td><td>起始现金 $800，练习目标 0.05 BTC</td></tr>
+    <tr><td>第 1 掷</td><td>发薪日</td><td>月收入 − 月支出会自动进账</td><td>+$1,200</td></tr>
+    <tr><td>第 2 掷</td><td>机会卡</td><td>机会卡要做选择；选「放弃」会提示但不卡住</td><td>+$1,500</td></tr>
+    <tr><td>第 3 掷</td><td>BTC 行情</td><td>回调是买入机会</td><td>价格 $60,000 → $57,000</td></tr>
+    <tr><td>交易</td><td>交易面板</td><td>用「补足目标」一键算出还差多少 BTC</td><td>买入 0.05 BTC，手续费 0.5%</td></tr>
+    <tr><td>结束</td><td>结算</td><td>真实对局四个要点：目标与排名、安全备份、合约风险、加机器人 / 邀请朋友</td><td>领取礼包</td></tr>
+   </tbody>
+  </table>
+ </section>
+
+ <section class="doc-sec" id="rules">
+  <h2><span class="idx">05</span>规则与边界</h2>
+  <ul class="points">
+   <li><b>奖励：</b>288 Cash + 新人头像框「启程罗盘」。头像框在商城展示，标注「新人礼包获得」，不可用 Cash 购买。</li>
+   <li><b>资格：</b>所有注册玩家各领一次；测试账号不可领；游客可以玩教程，登录后领取。</li>
+   <li><b>防重复：</b>领取记录以账号为主键，数据库层保证同一账号只能写入一次，并发点击也只会成功一次。</li>
+   <li><b>到账：</b>领取写入奖励流水，由数据库触发器同时发放 Cash 和头像框，两者一起成功或一起失败。</li>
+   <li><b>可重玩：</b>教程可以反复玩，礼包只领一次；练习局与真实对局、存档完全隔离。</li>
+   <li><b>已知取舍：</b>服务器无法验证玩家是否真的玩完教程。考虑到单账号仅一次、金额小，接受这个风险，换取实现简单、零延迟。</li>
+  </ul>
+ </section>
+
+ <section class="doc-sec" id="metrics">
+  <h2><span class="idx">06</span>数据指标</h2>
+  <div class="cards">
+   <div class="card"><b>漏斗</b><p>礼包图标曝光 → 打开卡片 → 开始教程 → 完成教程 → 领取礼包</p></div>
+   <div class="card"><b>转化</b><p>游客完成教程后的注册率；新人领取礼包后的首局开局率</p></div>
+   <div class="card"><b>留存</b><p>领过礼包的新人 vs 未领的新人，次日 / 7 日回访对比</p></div>
+  </div>
+ </section>
+
+ <section class="doc-sec">
+  <h2><span class="idx">07</span>迭代计划</h2>
+  <ul class="points">
+   <li><b>如果教程完成率低：</b>新玩家首次打开时自动弹出礼包卡片，而不是只靠右侧图标。</li>
+   <li><b>如果领取后首局率低：</b>领取成功页加「立即开一局（加机器人）」按钮，缩短到首局的路径。</li>
+   <li><b>如果老玩家复习需求高：</b>按进阶玩法（合约、保障、拍卖）拆出独立的小教程。</li>
+  </ul>
+ </section>
+
+ <section class="doc-sec" id="roadmap">
+  <h2><span class="idx">08</span>产品路线图 · 《囤比特币之路》近期迭代</h2>
+  <div class="road">
+   <div class="lane"><h3>已上线 · 2026.11</h3><ul>
+    <li><b>增长</b>主域名迁移 tunbtcroad.com、Telegram 小游戏、搜索收录</li>
+    <li><b>裂变</b>邀请宝箱（10 位好友完成首局解锁大奖）、病毒系数 K 值看板</li>
+    <li><b>社区</b>创世身份：前 100 位玩家专属编号与头像框</li>
+    <li><b>体验</b>背景音乐与音效、座位面板与排行榜重做、结算海报</li>
+    <li><b>节奏</b>最后交易「完成调整」：全员确认后提前结算，不再空等</li>
+    <li><b>性能</b>首屏请求 164 → 7，弹窗去模糊，交易面板更流畅</li>
+    <li><b>新人</b>新人礼包 + 新手实战教程（本文档）</li>
+   </ul></div>
+   <div class="lane next"><h3>候选方向 · 视数据决定</h3><ul>
+    <li>新人首访自动弹出礼包（看教程完成率）</li>
+    <li>固定时间的社区友谊赛（看同时在线人数）</li>
+    <li>进阶玩法小教程：合约、保障、拍卖</li>
+   </ul></div>
+  </div>
+ </section>
+
+ <footer class="doc-foot"><a class="btn primary" href="./">← 返回作品集</a><a class="btn" href="https://tunbtcroad.com/" target="_blank" rel="noopener">去玩《囤比特币之路》</a></footer>
+</div>
+
+</body>
+</html>
