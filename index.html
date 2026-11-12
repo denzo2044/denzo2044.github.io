@@ -13,7 +13,7 @@
 /* 视觉：深空夜色 + 地平线日出的橙金光 + 头像的天蓝描边，和 X 主页（@BTC_2044）同一套色调 */
 :root{
  --space:#05070c;--space-2:#0a0e17;--card:#0e131d;--card-2:#121a27;
- --ink:#eef1f6;--ink-2:#b4bdcb;--ink-3:#8b96a8;--line:#1d2636;--line-2:#2a3548;
+ --ink:#f4f6fa;--ink-2:#cfd6e1;--ink-3:#a7b1c0;--line:#1d2636;--line-2:#2a3548;
  --gold:#f7a531;--gold-2:#ffcc6e;--gold-soft:#f7a5311f;--sky:#9fd2ff;--sky-soft:#9fd2ff1a;
  --display:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--space)}
-body{margin:0;background:var(--space);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--space);color:var(--ink);font-family:var(--display);font-size:16.5px;line-height:1.8;-webkit-font-smoothing:antialiased}
 body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
  radial-gradient(1.2px 1.2px at 12% 18%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 27% 62%,#fff6 50%,transparent 51%),
  radial-gradient(1.4px 1.4px at 44% 8%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 63% 41%,#fff5 50%,transparent 51%),
@@ -55,7 +55,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-top:14px}
 h1{font-weight:900;font-size:clamp(32px,5.4vw,56px);line-height:1.15;margin:8px 0 14px;letter-spacing:-.01em;text-wrap:balance}
 h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{max-width:40em;color:var(--ink-2);font-size:16.5px;margin:0}
+.lede{max-width:40em;color:var(--ink-2);font-size:17px;margin:0}
 .id-card{min-width:250px;padding:18px 20px;border-radius:14px;background:var(--card-2);border:1px solid var(--line-2);font-size:14px}
 .id-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px}
 .id-card dt{color:var(--ink-3)}
@@ -72,7 +72,7 @@ h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold-2),var(--go
 [id^=case-]{scroll-margin-top:72px}
 h2.section{font-size:26px;font-weight:900;margin:0 0 22px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;scroll-margin-top:72px}
 h2.section .idx{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.1em}
-h2.section small{font-weight:400;font-size:14px;color:var(--ink-3)}
+h2.section small{font-weight:400;font-size:14.5px;color:var(--ink-2)}
 
 /* 案例 */
 .case{display:grid;grid-template-columns:210px 1fr;gap:30px;padding:30px;margin-bottom:18px;border-radius:18px;background:linear-gradient(180deg,var(--card),#0b1019);border:1px solid var(--line);position:relative;overflow:hidden}
@@ -86,14 +86,14 @@ h2.section small{font-weight:400;font-size:14px;color:var(--ink-3)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .chip{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--sky-soft);color:var(--sky);border:1px solid #9fd2ff26}
 .case-main{min-width:0}
-.case-main p{margin:0 0 12px;max-width:44em;color:#d9dee7}
+.case-main p{margin:0 0 12px;max-width:44em;color:#e9edf3}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold);margin:18px 0 6px}
 .label:first-child{margin-top:0}
-ul.points{margin:0 0 4px;padding-left:1.2em;color:#d9dee7}
+ul.points{margin:0 0 4px;padding-left:1.2em;color:#e9edf3}
 ul.points li{margin-bottom:5px}
 ul.points li::marker{color:var(--gold)}
 .flow{display:flex;align-items:stretch;margin:14px 0 8px;overflow-x:auto;padding-bottom:4px}
-.node{flex:1 1 0;min-width:130px;padding:10px 12px;border-radius:12px;background:#0a0f17;border:1px solid var(--line-2);font-size:13.5px;line-height:1.55;color:#d9dee7}
+.node{flex:1 1 0;min-width:130px;padding:10px 12px;border-radius:12px;background:#0a0f17;border:1px solid var(--line-2);font-size:13.5px;line-height:1.55;color:#e9edf3}
 .node b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--ink-3);letter-spacing:.1em;margin-bottom:3px}
 .node.core{background:var(--gold-soft);border-color:#f7a53188}
 .node.core b{color:var(--gold-2)}
@@ -122,7 +122,7 @@ ul.points li::marker{color:var(--gold)}
 .era.past .era-head .yr{color:var(--sky)}
 .era-head h3{margin:0;font-size:21px;font-weight:900}
 .era-head .tagline{font-size:13px;color:var(--ink-3)}
-.era p{margin:6px 0 10px;color:#d9dee7;max-width:46em}
+.era p{margin:6px 0 10px;color:#e9edf3;max-width:46em}
 .era .gain{margin:12px 0 0;padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
 .era .gain b{color:var(--gold-2);font-weight:700}
 .marks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
