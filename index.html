@@ -281,7 +281,7 @@ html.js .reveal.in{opacity:1;transform:none}
  <section class="proof" aria-label="关键数据">
   <a href="#case-omenx"><b class="mono">0 → 1.6万</b><span>官号粉丝 · 2 个月</span></a>
   <a href="#case-planet"><b class="mono">90%</b><span>付费产品续费率</span></a>
-  <a href="#case-game"><b class="mono">197 局</b><span>自研游戏累计开局</span></a>
+  <a href="#case-game"><b class="mono" data-stat="started" data-suffix=" 局">197 局</b><span>自研游戏累计开局</span></a>
   <a href="#case-usd8"><b class="mono">541 条</b><span>工具自动提交</span></a>
  </section>
 
@@ -324,10 +324,10 @@ html.js .reveal.in{opacity:1;transform:none}
       </ul>
       <div class="label">结果</div>
       <div class="metrics">
-        <div class="metric"><div class="v mono">24</div><div class="k">注册玩家</div></div>
-        <div class="metric"><div class="v mono">197 局</div><div class="k">累计开局</div></div>
-        <div class="metric"><div class="v mono">~20 分钟</div><div class="k">平均每局时长</div></div>
-        <div class="metric"><div class="v mono">71%</div><div class="k">开局后打完的比例</div></div>
+        <div class="metric"><div class="v mono" data-stat="players">24</div><div class="k">注册玩家</div></div>
+        <div class="metric"><div class="v mono" data-stat="started" data-suffix=" 局">197 局</div><div class="k">累计开局</div></div>
+        <div class="metric"><div class="v mono" data-stat="avgMinutes" data-prefix="~" data-suffix=" 分钟">~20 分钟</div><div class="k">平均每局时长</div></div>
+        <div class="metric"><div class="v mono" data-stat="completionRate" data-suffix="%">71%</div><div class="k">开局后打完的比例</div></div>
       </div>
     </div>
   </article>
@@ -554,6 +554,11 @@ html.js .reveal.in{opacity:1;transform:none}
  </footer>
 </div>
 <nav class="mbar" aria-label="快速联系"><a class="btn primary" href="mailto:dengzid2023@gmail.com">✉ 复制邮箱</a><a class="btn" href="https://x.com/BTC_2044" target="_blank" rel="noopener">X 私信</a><a class="btn" href="https://t.me/DJ2044" target="_blank" rel="noopener">TG</a></nav>
+<script>
+// 《囤比特币之路》的数据从游戏网站实时读取；取不到时保留页面上的数字。
+(function(){if(!window.fetch)return;fetch('https://tunbtcroad.com/api/stats/public').then(function(r){return r.ok?r.json():null;}).then(function(s){if(!s)return;
+document.querySelectorAll('[data-stat]').forEach(function(el){var v=s[el.getAttribute('data-stat')];if(typeof v!=='number'||!(v>0))return;el.textContent=(el.getAttribute('data-prefix')||'')+v.toLocaleString('en-US')+(el.getAttribute('data-suffix')||'');});}).catch(function(){});})();
+</script>
 <script>
 // 滚动渐显
 (function(){var root=document.documentElement;if(!('IntersectionObserver' in window))return;root.classList.add('js');
