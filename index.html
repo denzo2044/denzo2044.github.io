@@ -266,12 +266,48 @@ html.js .reveal.in{opacity:1;transform:none}
 .mini-label{margin:34px 0 12px;font-family:var(--mono);font-size:12.5px;letter-spacing:.24em;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:12px}
 .mini-label:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#f7a53144,transparent)}
 .proof{margin-top:0}.skills.six{margin-top:0}
+
+/* 增长案例 */
+details.growth{margin:0 0 64px;border-radius:18px;background:linear-gradient(180deg,var(--card),#0b1019);border:1px solid var(--line);overflow:hidden}
+details.growth>summary{list-style:none;cursor:pointer;padding:22px;display:block}
+details.growth>summary::-webkit-details-marker{display:none}
+.g-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g-tile{padding:14px 16px;border-radius:14px;background:#0a0f17;border:1px solid var(--line);min-width:0}
+.g-tile b{display:block;font-size:26px;font-weight:900;line-height:1.2;color:var(--gold-2)}
+.g-tile span{font-size:13px;color:var(--ink-2)}
+.g-open{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:700;color:var(--sky)}
+.g-open:after{content:"▾";transition:transform .2s}
+details.growth[open] .g-open{font-size:0}
+details.growth[open] .g-open:before{content:"收起案例";font-size:14px}
+details.growth[open] .g-open:after{transform:rotate(180deg)}
+.g-body{padding:0 22px 24px;border-top:1px dashed var(--line-2)}
+.g-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.g-case{padding:20px;border-radius:16px;background:var(--card-2);border:1px solid var(--line);min-width:0;position:relative}
+.g-case:before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:3px;background:var(--gold)}
+.g-no{font-size:12px;letter-spacing:.14em;color:var(--gold)}
+.g-case h3{margin:2px 0 10px;font-size:18px;font-weight:900;line-height:1.4}
+.g-res{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 14px;border-radius:12px;background:#0a0f17;border:1px solid var(--line)}
+.g-res b{font-size:24px;font-weight:900;color:var(--gold-2);line-height:1.2}
+.g-res span{font-size:13px;color:var(--ink-2)}
+.g-case .label{margin-top:14px}
+.g-case ol{margin:0;padding-left:1.25em;display:grid;gap:6px;font-size:14px;color:var(--ink-2);line-height:1.65}
+.g-case ol li::marker{color:var(--gold);font-family:var(--mono);font-weight:800}
+.g-case ol b{color:var(--ink)}
+.g-take{margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--line-2);font-size:14px;color:var(--sky);font-weight:700}
+.g-method{display:grid;grid-template-columns:auto repeat(4,1fr);gap:10px;align-items:stretch;margin-top:14px;padding:16px;border-radius:14px;background:var(--gold-soft);border:1px solid #f7a53144}
+.g-method>b{align-self:center;font-size:15px;color:var(--gold-2);padding-right:6px}
+.g-method span{font-size:13px;color:var(--ink-2);line-height:1.6}
+.g-method i{display:block;font-style:normal;font-family:var(--mono);font-weight:800;color:var(--gold)}
+.g-dl{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 18px;border-radius:12px;background:var(--gold);color:#1a1205;font-weight:900;font-size:15px;text-decoration:none}
+.g-dl svg{width:18px;height:18px}
+@media (max-width:900px){.g-tiles{grid-template-columns:1fr 1fr}.g-grid{grid-template-columns:1fr}.g-method{grid-template-columns:1fr 1fr}.g-method>b{grid-column:1/-1}}
+@media (max-width:520px){details.growth>summary{padding:16px}.g-body{padding:0 16px 18px}.g-tile b{font-size:22px}.g-case{padding:16px}.g-method{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header class="topbar"><div class="in">
  <a class="brand" href="#top"><img src="https://pbs.twimg.com/profile_images/1995517992780939265/yB6SjfVD_400x400.jpg" alt="">Denzo · Crypto豪哥</a>
- <nav aria-label="页面导航"><a href="#work">作品</a><a href="#pm">PRD</a><a href="#journey">经历</a><a href="#method">方法</a><a href="#contact">联系</a></nav>
+ <nav aria-label="页面导航"><a href="#work">作品</a><a href="#pm">PRD</a><a href="#growth">增长</a><a href="#journey">经历</a><a href="#method">方法</a><a href="#contact">联系</a></nav>
  <a class="dl" href="Denzo-portfolio.pdf" download="Denzo-简历.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下载</a>
 </div></header>
 
@@ -301,7 +337,7 @@ html.js .reveal.in{opacity:1;transform:none}
 
  <div class="mini-label">成果一览</div>
  <section class="proof" aria-label="关键数据">
-  <a href="#case-square"><b class="mono">0 → 1.6万</b><span>官号粉丝 · 2 个月</span></a>
+  <a href="#case-square"><b class="mono">0 → 2.1万</b><span>官号粉丝 · 3 个月</span></a>
   <a href="#case-planet"><b class="mono">90%</b><span>付费产品续费率</span></a>
   <a href="#case-game"><b class="mono" data-stat="started" data-suffix=" 局">226 局</b><span>自研游戏累计开局</span></a>
   <a href="#case-usd8"><b class="mono">541 条</b><span>工具自动提交</span></a>
@@ -313,7 +349,7 @@ html.js .reveal.in{opacity:1;transform:none}
   <div class="skill"><div class="tag">INCENTIVE</div><b>激励与经济系统</b><span>积分产出与消耗、分层奖励、防刷去重；经济学背景，关注可持续与风险</span></div>
   <div class="skill"><div class="tag">AI</div><b>AI 产品落地</b><span>提示词工程、AIGC 内容引擎；用 AI 做开发，能判断技术可行性</span></div>
   <div class="skill"><div class="tag">WEB3</div><b>Web3 原生</b><span>定投、空投、DEX、Meme、合约、预测市场都亲手做过，懂链上用户</span></div>
-  <div class="skill"><div class="tag">GROWTH</div><b>增长运营</b><span>官号 0→1.6 万、注册转化活动、邀请裂变，盯漏斗和 K 值</span></div>
+  <div class="skill"><div class="tag">GROWTH</div><b>增长运营</b><span>官号 0→2.1 万、注册转化活动、邀请裂变，盯漏斗和 K 值</span></div>
   <div class="skill"><div class="tag">DATA</div><b>数据与复盘</b><span>自建数据看板，日报周复盘，每次迭代都留下数据和结论</span></div>
  </section>
 
@@ -402,7 +438,7 @@ html.js .reveal.in{opacity:1;transform:none}
       <p>预测市场是新品类，用户需要一个低门槛的理由去了解、注册并完成第一笔交易。</p>
       <div class="label">结果</div>
       <div class="metrics">
-        <div class="metric"><div class="v mono">0 → 1.6万</div><div class="k">广场官号粉丝（2 个月）</div></div>
+        <div class="metric"><div class="v mono">0 → 2.1万</div><div class="k">广场官号粉丝（3 个月）</div></div>
         <div class="metric"><div class="v mono">25</div><div class="k">单场活动带来的注册</div></div>
         <div class="metric"><div class="v mono">0.5–1U</div><div class="k">单个注册成本</div></div>
       </div>
@@ -533,7 +569,78 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
  </section>
 
- <h2 class="section" id="journey"><span class="idx">04</span>我的路径 <small>2021 → 现在</small></h2>
+ <h2 class="section" id="growth"><span class="idx">04</span>产品增长案例与经验 <small>点开看完整策略，可下载 PDF</small></h2>
+ <details class="growth">
+  <summary>
+   <div class="g-tiles">
+    <div class="g-tile"><b class="mono">2.1万</b><span>官号粉丝 · 3 个月</span></div>
+    <div class="g-tile"><b class="mono">42 位</b><span>万粉大V · 2 天聚集</span></div>
+    <div class="g-tile"><b class="mono">1800 人</b><span>粉丝聊天室 · 3 个月</span></div>
+    <div class="g-tile"><b class="mono">0 → 40</b><span>自研游戏冷启动</span></div>
+   </div>
+   <span class="g-open">展开 4 个增长案例</span>
+  </summary>
+  <div class="g-body">
+   <div class="g-grid">
+    <article class="g-case">
+     <div class="g-no mono">CASE 01</div><h3>预测市场平台 · 广场官号从 0 起号</h3>
+     <div class="g-res"><b class="mono">0 → 2.1万</b><span>3 个月，币安广场粉丝</span></div>
+     <div class="label">策略</div>
+     <ol>
+      <li><b>每日红包帖</b>：固定节奏发红包，给用户每天回来看的理由。</li>
+      <li><b>转发活动</b>：组织用户转发参与，借用户的关注链扩散曝光。</li>
+      <li><b>仅粉丝可评论</b>：想参与互动先关注，把互动流量沉淀成粉丝。</li>
+      <li><b>大V直播间联合主持</b>：做共同主持人，借大V的直播流量涨粉。</li>
+     </ol>
+     <p class="g-take">经验：每个动作都设一道“关注”门槛，曝光才会变成粉丝。</p>
+    </article>
+    <article class="g-case">
+     <div class="g-no mono">CASE 02</div><h3>2 天聚集 42 位万粉大V</h3>
+     <div class="g-res"><b class="mono">42 位</b><span>粉丝量 1 万～3 万+ 的广场大V</span></div>
+     <div class="label">策略</div>
+     <ol>
+      <li><b>阶梯奖励</b>：按粉丝量级给转发奖励，1 万粉 0.52U、2 万粉 0.66U、3 万粉 0.88U。</li>
+      <li><b>分销邀请</b>：每邀请一位符合条件的大V进群，再奖励 0.5U。</li>
+      <li><b>从老成员启动</b>：先激活聊天室已有成员，带动成员之间互相拉人、互相转发。</li>
+     </ol>
+     <p class="g-take">经验：奖励按影响力分层，再加一层拉人奖励，大V会主动帮你找大V。</p>
+    </article>
+    <article class="g-case">
+     <div class="g-no mono">CASE 03</div><h3>粉丝聊天室：从进群到转化</h3>
+     <div class="g-res"><b class="mono">1800 人</b><span>3 个月；单日转化 25 人，成本 0.5–1U / 人</span></div>
+     <div class="label">策略</div>
+     <ol>
+      <li><b>红包引流</b>：用红包吸引用户进群，降低第一步的门槛。</li>
+      <li><b>品牌曝光</b>：群里持续出现品牌和活动，提升知名度。</li>
+      <li><b>积累信任</b>：日常互动、答疑，让用户熟悉并信任品牌。</li>
+      <li><b>推动转化</b>：在信任基础上发起注册活动，算清每个转化的成本。</li>
+     </ol>
+     <p class="g-take">经验：群不是终点，而是“认识 → 信任 → 转化”漏斗的中段。</p>
+    </article>
+    <article class="g-case">
+     <div class="g-no mono">CASE 04</div><h3>《囤比特币之路》冷启动</h3>
+     <div class="g-res"><b class="mono">0 → 40</b><span>第一批真实玩家</span></div>
+     <div class="label">策略</div>
+     <ol>
+      <li><b>熟人起步</b>：从已加入的群聊和好友关系里，拉来第一批玩家。</li>
+      <li><b>每晚 9 点组局</b>：固定时间开局并办活动，让人知道这个点来一定有人玩。</li>
+      <li><b>内容即素材</b>：游戏有故事性，对局截图本身就能发到社交平台，玩家自带传播。</li>
+     </ol>
+     <p class="g-take">经验：冷启动先解决“有人一起玩”，再谈规模。</p>
+    </article>
+   </div>
+   <div class="g-method">
+    <b>我的增长方法</b>
+    <span><i>01</i>奖励绑定目标行为：关注、转发、注册，不发无条件的奖励</span>
+    <span><i>02</i>按价值分层：影响力越大、贡献越大，奖励越高</span>
+    <span><i>03</i>让老用户带新用户：邀请和分销奖励，把用户变成渠道</span>
+    <span><i>04</i>每一步都算成本：盯住单个粉丝、单个转化花了多少</span>
+   </div>
+   <a class="g-dl" href="growth-cases.pdf" download="Denzo-增长案例.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下载增长案例 PDF（一页）</a>
+  </div>
+ </details>
+
+ <h2 class="section" id="journey"><span class="idx">05</span>我的路径 <small>2021 → 现在</small></h2>
  <section class="timeline" aria-label="经历时间线">
   <article class="era past">
    <div class="era-card">
@@ -574,7 +681,7 @@ html.js .reveal.in{opacity:1;transform:none}
   </article>
  </section>
 
- <h2 class="section" id="method"><span class="idx">05</span>我的做事方式</h2>
+ <h2 class="section" id="method"><span class="idx">06</span>我的做事方式</h2>
  <section class="method">
   <div class="step"><div class="n">01</div><b>找到重复</b><p>从自己每天被卡住的环节出发，找到值得自动化的重复动作。</p></div>
   <div class="step"><div class="n">02</div><b>拆清规则</b><p>先弄懂平台和活动的规则、限制与激励，再决定怎么设计。</p></div>
